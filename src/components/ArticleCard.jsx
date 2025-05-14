@@ -1,8 +1,17 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ArticleCard = ({ title, slug, image, summary }) => (
-  <div className=" rounded-xl  hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-    <img src={image} alt={title} className="w-full h-48 object-cover" />
+  <div className="rounded-xl hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+    <div className="relative w-full h-48">
+      <Image
+        src={image}
+        alt={title}
+        layout="fill"
+        objectFit="cover"
+        className="rounded-t-xl"
+      />
+    </div>
     <div className="p-4">
       <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
       <p className="text-sm text-gray-600 mt-2">{summary}</p>

@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import articles from '../data/articles';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -17,7 +18,7 @@ const ArticlePage = () => {
   useEffect(() => {
     if (article) {
       const related = articles
-        .filter(a => a.slug !== article.slug) // or use category matching
+        .filter(a => a.slug !== article.slug)
         .slice(0, visibleCount);
       setRelatedPosts(related);
     }
@@ -33,11 +34,16 @@ const ArticlePage = () => {
           {/* Article Content */}
           <div className="lg:w-[70%] bg-white shadow-md p-6 rounded-lg">
             <h1 className="text-3xl font-bold mb-4">{article.title}</h1>
-            <img
-              src={article.image}
-              alt={article.title}
-              className="w-full h-64 object-cover rounded mb-6"
-            />
+            <div className="w-full h-64 relative mb-6">
+              <Image
+                src={article.image}
+                alt={article.title}
+                layout="fill"
+                objectFit="cover"
+                className="rounded"
+                priority
+              />
+            </div>
             <div
               className="text-lg leading-relaxed space-y-4"
               dangerouslySetInnerHTML={{ __html: article.content }}
@@ -65,10 +71,18 @@ const ArticlePage = () => {
             {/* Ad */}
             <div className="bg-yellow-100 p-4 rounded shadow-sm text-center">
               <p className="text-sm text-gray-700 font-medium">🌟 Sponsored Ad</p>
-              <div className="my-2">
-                <img src="/images/ad-placeholder.jpg" alt="Ad" className="rounded w-full h-40 object-cover" />
+              <div className="my-2 relative w-full h-40">
+                <Image
+                  src="/images/ad-placeholder.jpg"
+                  alt="Ad"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded"
+                />
               </div>
-              <p className="text-gray-600 text-sm">మీ ఇంటిని మిగతావారికంటే ముందుగా మార్చుకోండి! ఇప్పుడు ఆర్డర్ చేయండి!</p>
+              <p className="text-gray-600 text-sm">
+                మీ ఇంటిని మిగతావారికంటే ముందుగా మార్చుకోండి! ఇప్పుడు ఆర్డర్ చేయండి!
+              </p>
             </div>
           </div>
         </div>
@@ -79,7 +93,15 @@ const ArticlePage = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {relatedPosts.map(post => (
               <div key={post.slug} className="bg-white p-4 rounded shadow-md">
-                <img src={post.image} alt={post.title} className="w-full h-40 object-cover rounded mb-3" />
+                <div className="relative w-full h-40 mb-3">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded"
+                  />
+                </div>
                 <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
                 <p className="text-sm text-gray-600 line-clamp-3">{post.description}</p>
                 <Link href={`/${post.slug}`} className="text-blue-500 hover:underline text-sm mt-2 inline-block cursor-pointer">

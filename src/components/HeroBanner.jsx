@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";  // Import Image from next/image
 
 const featuredPosts = [
   {
@@ -50,11 +51,16 @@ const HeroBanner = () => {
               : "opacity-0 scale-95 z-0"
           }`}
         >
-          <img
-            src={post.image}
-            alt={post.title}
-            className="w-full h-full object-cover brightness-75"
-          />
+          <div className="w-full h-full relative">
+            <Image
+              src={post.image}
+              alt={post.title}
+              layout="fill"
+              objectFit="cover"
+              priority
+              className="brightness-75"
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-end p-6 md:p-10">
             <Link href={post.link}>
               <h2 className="text-white text-2xl md:text-4xl font-semibold hover:underline cursor-pointer drop-shadow-lg">
