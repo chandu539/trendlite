@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import Link from 'next/link';
 
 export default function PrivacyPolicyPage() {
   return (
@@ -9,7 +10,7 @@ export default function PrivacyPolicyPage() {
         <title>Privacy Policy | TrendLite - The Pulse of Tech &amp; Life</title>
         <meta
           name="description"
-          content="Read TrendLite&apos;s Privacy Policy to understand how we collect, use, and protect your personal data. We are committed to safeguarding your information."
+          content="Read TrendLite's Privacy Policy to understand how we collect, use, and protect your personal data. We are committed to safeguarding your information."
         />
         <meta name="keywords" content="Privacy Policy, TrendLite, Data Protection, Cookies, User Rights, Telugu Blogs" />
         <meta name="author" content="TrendLite Team" />
@@ -29,7 +30,7 @@ export default function PrivacyPolicyPage() {
           <p className="mb-2 text-gray-700">
             We may collect the following types of information:
           </p>
-          <ul className="list-disc ml-6 mb-4">
+          <ul className="list-disc ml-6 mb-4 text-gray-700">
             <li>Your name and email when submitting contact forms or comments</li>
             <li>Anonymous data through cookies for analytics and user experience</li>
             <li>Browser and device information (IP address, browser type, etc.)</li>
@@ -39,7 +40,7 @@ export default function PrivacyPolicyPage() {
           <p className="mb-2 text-gray-700">
             We use collected data to:
           </p>
-          <ul className="list-disc ml-6 mb-4">
+          <ul className="list-disc ml-6 mb-4 text-gray-700">
             <li>Respond to your queries or feedback</li>
             <li>Improve website performance and content</li>
             <li>Analyze user behavior for better content creation</li>
@@ -62,13 +63,14 @@ export default function PrivacyPolicyPage() {
           <p className="mb-2 text-gray-700">
             You have the right to:
           </p>
-          <ul className="list-disc ml-6 mb-4">
+          <ul className="list-disc ml-6 mb-4 text-gray-700">
             <li>Request access to your personal data</li>
             <li>Ask us to delete or update your data</li>
             <li>Withdraw consent at any time</li>
           </ul>
           <p className="mb-4 text-gray-700">
-            To exercise your rights, please contact us via the form on our <a href="/contact" className="text-blue-600 underline">Contact Page</a>.
+            To exercise your rights, please contact us via the form on our{" "}
+            <Link href="/contact" className="text-blue-600 underline">Contact Page</Link>.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-2">6. Changes to This Policy</h2>
@@ -78,7 +80,8 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="text-2xl font-semibold mt-8 mb-2">7. Contact Us</h2>
           <p className="mb-4 text-gray-700">
-            If you have any questions about this Privacy Policy, you can reach us through our <a href="/contact" className="text-blue-600 underline">Contact Page</a>.
+            If you have any questions about this Privacy Policy, you can reach us through our{" "}
+            <Link href="/contact" className="text-blue-600 underline">Contact Page</Link>.
           </p>
 
           <p className="mt-6 text-sm text-gray-500">Last Updated: May 15, 2025</p>
