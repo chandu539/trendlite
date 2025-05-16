@@ -6,7 +6,7 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>About Us | TrendLite - The Pulse of Tech & Life</title>
+        <title>About Us | TrendLite - The Pulse of Tech &amp; Life</title>
         <meta
           name="description"
           content="Learn more about TrendLite - a blog that brings you trending insights in Tech, Movies, Health, and Inventions. We inspire, inform, and entertain our Telugu readers."
@@ -26,7 +26,7 @@ export default function AboutPage() {
           </p>
 
           <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            Our mission is to bring high-quality, trustworthy, and engaging content to readers looking to stay updated, entertained, and informed. Whether you're curious about the newest smartphone under ₹20,000, interested in health benefits of eating vegetables, or exploring futuristic AI gadgets — we’ve got you covered!
+            Our mission is to bring high-quality, trustworthy, and engaging content to readers looking to stay updated, entertained, and informed. Whether you&apos;re curious about the newest smartphone under ₹20,000, interested in health benefits of eating vegetables, or exploring futuristic AI gadgets — we&apos;ve got you covered!
           </p>
 
           <p className="mb-4 text-lg leading-relaxed text-gray-700">
@@ -34,16 +34,16 @@ export default function AboutPage() {
             - 📱 Detailed tech reviews in your language<br />
             - 🎬 Honest movie reviews with cultural depth<br />
             - ❤️ Health and wellness tips backed by research<br />
-            - 💡 Cutting-edge invention updates & science news<br />
+            - 💡 Cutting-edge invention updates &amp; science news<br />
             - 📝 Articles tailored for Telugu-speaking readers worldwide
           </p>
 
           <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            We believe information should be accessible, reliable, and enjoyable. That’s why we aim to create content that’s easy to understand and hard to forget.
+            We believe information should be accessible, reliable, and enjoyable. That&apos;s why we aim to create content that&apos;s easy to understand and hard to forget.
           </p>
 
           <p className="text-lg leading-relaxed text-gray-700">
-            Thank you for being a part of the TrendLite community. We’re just getting started — and we’re thrilled to have you along for the journey!
+            Thank you for being a part of the TrendLite community. We&apos;re just getting started — and we&apos;re thrilled to have you along for the journey!
           </p>
         </main>
 

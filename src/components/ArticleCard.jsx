@@ -11,7 +11,7 @@ const ArticleCard = ({ title, slug, image, summary }) => (
         style={{ objectFit: 'cover' }}
         className="rounded-t-xl"
         sizes="(max-width: 768px) 100vw, 33vw"
-        //priority
+        
       />
     </div>
     <div className="p-4">

@@ -6,10 +6,10 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <Head>
-        <title>Privacy Policy | TrendLite - The Pulse of Tech & Life</title>
+        <title>Privacy Policy | TrendLite - The Pulse of Tech &amp; Life</title>
         <meta
           name="description"
-          content="Read TrendLite’s Privacy Policy to understand how we collect, use, and protect your personal data. We are committed to safeguarding your information."
+          content="Read TrendLite&apos;s Privacy Policy to understand how we collect, use, and protect your personal data. We are committed to safeguarding your information."
         />
         <meta name="keywords" content="Privacy Policy, TrendLite, Data Protection, Cookies, User Rights, Telugu Blogs" />
         <meta name="author" content="TrendLite Team" />

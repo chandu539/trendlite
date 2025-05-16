@@ -8,25 +8,26 @@ const featuredPosts = [
     id: 1,
     title: "టాప్ 5 బెస్ట్ ఫోన్లు ₹20,000 లో (Top 5 Best Phones)",
     image: "/images/phone.jpg",
-    link: "/tech/top-phones-under-20000",
+    slug: "best-phones-under-20k",
   },
   {
     id: 2,
     title: "హీరో మహేష్ బాబు కొత్త మూవీ రివ్యూ",
     image: "/images/mahesh.jpg",
-    link: "/movies/mahesh-babu-new-movie",
+    slug: "mahesh-new-movie-review",
   },
   {
     id: 3,
     title: "కూరగాయలు తినడం వల్ల ఆరోగ్య ప్రయోజనాలు",
     image: "/images/vegetables.jpg",
-    link: "/health/vegetable-benefits",
+    slug: "healthy-foods-daily",
+    
   },
   {
     id: 4,
     title: "2025 లో కొత్తగా వచ్చిన AI గాడ్జెట్లు",
     image: "/images/ai-gadgets.jpg",
-    link: "/inventions/latest-ai-gadgets-2025",
+    slug: "latest-tech-gadgets",
   },
 ];
 
@@ -34,10 +35,9 @@ const HeroBanner = () => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(
-      () => setCurrent((prev) => (prev + 1) % featuredPosts.length),
-      5000
-    );
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % featuredPosts.length);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -47,9 +47,7 @@ const HeroBanner = () => {
         <div
           key={post.id}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out transform ${
-            index === current
-              ? "opacity-100 scale-100 z-10"
-              : "opacity-0 scale-95 z-0"
+            index === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0"
           }`}
         >
           {/* Image */}
@@ -65,9 +63,9 @@ const HeroBanner = () => {
             />
           </div>
 
-          {/* Overlay with title */}
+          {/* Overlay with title and link */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-end p-6 md:p-10">
-            <Link href={post.link}>
+            <Link href={`/${post.slug}`}>
               <h2 className="text-white text-2xl md:text-4xl font-semibold hover:underline cursor-pointer drop-shadow-lg">
                 {post.title}
               </h2>

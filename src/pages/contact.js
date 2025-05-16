@@ -43,7 +43,7 @@ export default function ContactPage() {
         <div className="w-full max-w-2xl bg-white p-10 rounded-2xl shadow-xl border border-gray-100">
           <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-2">Get in Touch</h1>
           <p className="text-center text-gray-500 mb-6">
-            We'd love to hear from you! Whether it's feedback, collaboration, or just a hello.
+            We&apos;d love to hear from you! Whether it&apos;s feedback, collaboration, or just a hello.
           </p>
 
           {submitted && (
