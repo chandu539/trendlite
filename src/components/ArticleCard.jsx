@@ -7,9 +7,11 @@ const ArticleCard = ({ title, slug, image, summary }) => (
       <Image
         src={image}
         alt={title}
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: 'cover' }}
         className="rounded-t-xl"
+        sizes="(max-width: 768px) 100vw, 33vw"
+        //priority
       />
     </div>
     <div className="p-4">

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";  // Import Image from next/image
+import Image from "next/image";
 
 const featuredPosts = [
   {
@@ -34,9 +34,10 @@ const HeroBanner = () => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % featuredPosts.length);
-    }, 5000);
+    const interval = setInterval(
+      () => setCurrent((prev) => (prev + 1) % featuredPosts.length),
+      5000
+    );
     return () => clearInterval(interval);
   }, []);
 
@@ -45,22 +46,26 @@ const HeroBanner = () => {
       {featuredPosts.map((post, index) => (
         <div
           key={post.id}
-          className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out transform ${
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out transform ${
             index === current
               ? "opacity-100 scale-100 z-10"
               : "opacity-0 scale-95 z-0"
           }`}
         >
-          <div className="w-full h-full relative">
+          {/* Image */}
+          <div className="relative w-full h-full">
             <Image
               src={post.image}
               alt={post.title}
-              layout="fill"
-              objectFit="cover"
+              fill
               priority
+              style={{ objectFit: "cover" }}
               className="brightness-75"
+              sizes="(max-width: 768px) 100vw, 100vw"
             />
           </div>
+
+          {/* Overlay with title */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent flex flex-col justify-end p-6 md:p-10">
             <Link href={post.link}>
               <h2 className="text-white text-2xl md:text-4xl font-semibold hover:underline cursor-pointer drop-shadow-lg">
@@ -71,8 +76,8 @@ const HeroBanner = () => {
         </div>
       ))}
 
-      {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+      {/* Dots indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {featuredPosts.map((_, index) => (
           <button
             key={index}

@@ -29,10 +29,13 @@ const Header = () => {
           {/* Search Box */}
           <div className="relative">
             <input
+              id="search-input"
+              name="search"
               type="text"
               placeholder="Search..."
               className="pl-10 pr-3 py-1 rounded-md bg-gray-700 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
             />
+
             <MagnifyingGlassIcon className="w-5 h-5 text-gray-300 absolute left-2 top-1.5" />
           </div>
         </nav>
@@ -68,10 +71,13 @@ const Header = () => {
           <Link href="/inventions" className="block text-white">💡 Inventions</Link>
           <div className="relative">
             <input
+              id="mobile-search-input"
+              name="search"
               type="text"
               placeholder="Search..."
               className="w-full pl-10 pr-3 py-1 rounded-md bg-gray-800 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
             />
+
             <MagnifyingGlassIcon className="w-5 h-5 text-gray-300 absolute left-2 top-1.5" />
           </div>
         </div>

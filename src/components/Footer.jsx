@@ -3,7 +3,7 @@ const Footer = () => (
     <p>© 2025 Telugu Blogs. All rights reserved.</p>
     <div className="mt-2">
       <a href="/about" className="mx-2">About Us</a>
-      <a href="/privacy" className="mx-2">Privacy Policy</a>
+      <a href="/privacy-policy" className="mx-2">Privacy Policy</a>
       <a href="/contact" className="mx-2">Contact Us</a>
     </div>
   </footer>
