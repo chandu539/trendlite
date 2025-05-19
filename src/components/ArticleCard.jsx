@@ -1,15 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { format } from 'date-fns'; // ✅ Import from date-fns
 
-const ArticleCard = ({ title, slug, image, introduction,category, publishedAt }) => {
-  const formattedDate = new Date(publishedAt).toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+const ArticleCard = ({ title, slug, image, introduction, category, publishedAt }) => {
+  // ✅ Consistent date formatting using date-fns
+  const formattedDate = format(new Date(publishedAt), 'dd MMM yyyy'); // e.g., 19 May 2025
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-indigo-100 ">
+    <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-indigo-100">
       <div className="p-6">
         <h3 className="text-2xl font-bold text-gray-900 mb-1">{title}</h3>
         <p className="text-sm text-gray-500 mb-4">{formattedDate}</p>
@@ -33,8 +31,7 @@ const ArticleCard = ({ title, slug, image, introduction,category, publishedAt })
             </p>
 
             <Link
-            href={`/${category}/${slug}`}
-
+              href={`/${category}/${slug}`}
               className="inline-block text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors"
             >
               Read More →

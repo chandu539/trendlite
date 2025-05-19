@@ -2,7 +2,6 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ArticleCard from '../components/ArticleCard';
 import { createClient } from 'next-sanity';
-import { useEffect, useState } from 'react';
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -11,36 +10,36 @@ const client = createClient({
   useCdn: true,
 });
 
-export default function Home() {
-  const [articles, setArticles] = useState([]);
+// Server-side fetch to avoid CORS issues
+export async function getStaticProps() {
+  const query = `*[_type == "post"] | order(_createdAt desc){
+    title,
+    slug,
+    mainImage{
+      asset->{url}
+    },
+    categories[]->{
+      title
+    },
+    publishedAt,
+    introduction
+  }`;
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      const query = `*[_type == "post"] | order(_createdAt desc){
-        title,
-        slug,
-        mainImage{
-          asset->{url}
-        },
-        categories[]->{
-          title
-        },
-        publishedAt,
-        introduction
-      }`;
+  const articles = await client.fetch(query);
 
-      const data = await client.fetch(query);
-      setArticles(data);
-    };
+  return {
+    props: {
+      articles,
+    },
+    revalidate: 60, // Optional: revalidate every 60 seconds (ISR)
+  };
+}
 
-    fetchArticles();
-  }, []);
-
+export default function Home({ articles }) {
   return (
     <>
       <Header />
       <main className="container mx-auto px-4 mt-6">
-
         <div className="flex flex-col md:flex-row gap-8 mt-10">
           {/* Left side: Show all articles */}
           <div className="w-full md:w-[70%]">
@@ -54,7 +53,7 @@ export default function Home() {
                       title={article.title}
                       slug={article.slug?.current}
                       image={article.mainImage?.asset?.url}
-                      category={article.categories[0]?.title.toLowerCase()} 
+                      category={article.categories[0]?.title.toLowerCase()}
                       publishedAt={article.publishedAt}
                       introduction={article.introduction}
                     />
@@ -66,7 +65,7 @@ export default function Home() {
             </section>
           </div>
 
-          {/* Right sidebar unchanged */}
+          {/* Right sidebar */}
           <aside className="w-full md:w-[30%] space-y-6">
             <div className="bg-white rounded-xl shadow-md p-4">
               <h3 className="text-lg font-semibold mb-2">🔔 Sponsored Ad</h3>
