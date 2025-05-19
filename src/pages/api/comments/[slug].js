@@ -1,6 +1,6 @@
 // pages/api/comments/[slug].js
-import { connectToDB } from '@/lib/mongodb';
-import Comment from '@/models/Comment';
+import { connectToDB } from '../../../lib/mongodb';
+import Comment from '../../../models/Comment';
 
 export default async function handler(req, res) {
   const { slug } = req.query;

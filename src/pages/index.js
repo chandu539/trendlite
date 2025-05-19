@@ -1,87 +1,72 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import HeroBanner from '../components/HeroBanner';
 import ArticleCard from '../components/ArticleCard';
-import articles from '../data/articles';
+import { createClient } from 'next-sanity';
+import { useEffect, useState } from 'react';
+
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  apiVersion: '2023-01-01',
+  useCdn: true,
+});
 
 export default function Home() {
-  const latestArticles = articles.slice(0, 6);
-  const latestSlugs = new Set(latestArticles.map(a => a.slug));
+  const [articles, setArticles] = useState([]);
 
-  // Updated: Allow tech articles even if they are in latestArticles
-  const techArticles = articles.filter(a => a.category === 'tech').slice(0, 3);
+  useEffect(() => {
+    const fetchArticles = async () => {
+      const query = `*[_type == "post"] | order(_createdAt desc){
+        title,
+        slug,
+        mainImage{
+          asset->{url}
+        },
+        categories[]->{
+          title
+        },
+        publishedAt,
+        introduction
+      }`;
 
-  // Continue excluding latestArticles for other categories
-  const movieArticles = articles.filter(a => a.category === 'movies' && !latestSlugs.has(a.slug)).slice(0, 3);
-  const healthArticles = articles.filter(a => a.category === 'health' && !latestSlugs.has(a.slug)).slice(0, 3);
-  const inventionArticles = articles.filter(a => a.category === 'inventions' && !latestSlugs.has(a.slug)).slice(0, 3);
+      const data = await client.fetch(query);
+      setArticles(data);
+    };
+
+    fetchArticles();
+  }, []);
 
   return (
     <>
       <Header />
       <main className="container mx-auto px-4 mt-6">
-        <HeroBanner />
 
         <div className="flex flex-col md:flex-row gap-8 mt-10">
-          {/* Main Content - 70% */}
+          {/* Left side: Show all articles */}
           <div className="w-full md:w-[70%]">
             <section className="mb-10">
               <h2 className="text-2xl font-bold mb-4">📰 Latest Articles</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {latestArticles.map(article => (
-                  <div key={article.slug}>
-                    <ArticleCard {...article} />
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="mb-10">
-              <h2 className="text-2xl font-bold mb-4">📱 Latest from Tech</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {techArticles.map(article => (
-                  <div key={article.slug}>
-                    <ArticleCard {...article} />
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="mb-10">
-              <h2 className="text-2xl font-bold mb-4">🎬 Latest from Movies</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {movieArticles.map(article => (
-                  <div key={article.slug}>
-                    <ArticleCard {...article} />
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="mb-10">
-              <h2 className="text-2xl font-bold mb-4">❤️ Latest from Health</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {healthArticles.map(article => (
-                  <div key={article.slug}>
-                    <ArticleCard {...article} />
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="mb-10">
-              <h2 className="text-2xl font-bold mb-4">💡 Latest from Inventions</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {inventionArticles.map(article => (
-                  <div key={article.slug}>
-                    <ArticleCard {...article} />
-                  </div>
-                ))}
-              </div>
+              {articles.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                  {articles.map((article) => (
+                    <ArticleCard
+                      key={article.slug?.current}
+                      title={article.title}
+                      slug={article.slug?.current}
+                      image={article.mainImage?.asset?.url}
+                      category={article.categories[0]?.title.toLowerCase()} 
+                      publishedAt={article.publishedAt}
+                      introduction={article.introduction}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <p>No articles found.</p>
+              )}
             </section>
           </div>
 
-          {/* Sidebar - 30% */}
+          {/* Right sidebar unchanged */}
           <aside className="w-full md:w-[30%] space-y-6">
             <div className="bg-white rounded-xl shadow-md p-4">
               <h3 className="text-lg font-semibold mb-2">🔔 Sponsored Ad</h3>

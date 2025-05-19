@@ -1,5 +1,5 @@
-import { connectToDB } from '@/lib/mongodb';
-import Contact from '@/models/Contact';
+import { connectToDB } from '../../lib/mongodb';
+import Contact from '../../models/Contact';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {

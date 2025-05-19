@@ -2,50 +2,62 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { client } from '../sanity/lib/client';// Adjust the path to your sanity client
+import imageUrlBuilder from "@sanity/image-url";
 
-const featuredPosts = [
-  {
-    id: 1,
-    title: "టాప్ 5 బెస్ట్ ఫోన్లు ₹20,000 లో (Top 5 Best Phones)",
-    image: "/images/phone.jpg",
-    slug: "best-phones-under-20k",
-  },
-  {
-    id: 2,
-    title: "హీరో మహేష్ బాబు కొత్త మూవీ రివ్యూ",
-    image: "/images/mahesh.jpg",
-    slug: "mahesh-new-movie-review",
-  },
-  {
-    id: 3,
-    title: "కూరగాయలు తినడం వల్ల ఆరోగ్య ప్రయోజనాలు",
-    image: "/images/vegetables.jpg",
-    slug: "healthy-foods-daily",
-    
-  },
-  {
-    id: 4,
-    title: "2025 లో కొత్తగా వచ్చిన AI గాడ్జెట్లు",
-    image: "/images/ai-gadgets.jpg",
-    slug: "latest-tech-gadgets",
-  },
-];
+const builder = imageUrlBuilder(client);
+function urlFor(source) {
+  return builder.image(source);
+}
 
 const HeroBanner = () => {
+  const [posts, setPosts] = useState([]);
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % featuredPosts.length);
-    }, 5000);
-    return () => clearInterval(interval);
+    // GROQ query to fetch featured posts
+    const query = `*[_type == "post" && defined(mainImage)] | order(publishedAt desc)[0..3]{
+      _id,
+      title,
+      "slug": slug.current,
+      "category": category->slug.current,
+      mainImage
+    }`;
+
+
+    client
+      .fetch(query)
+      .then((data) => {
+        setPosts(data);
+      })
+      .catch((err) => {
+        console.error("Sanity fetch error:", err);
+      });
   }, []);
+
+  useEffect(() => {
+    if (posts.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % posts.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [posts]);
+
+  if (posts.length === 0) {
+    return (
+      <div className="w-full h-72 md:h-[20rem] flex items-center justify-center rounded-2xl shadow-lg mb-10 bg-gray-200">
+        <p className="text-gray-600">Loading featured posts...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-full h-72 md:h-[20rem] overflow-hidden rounded-2xl shadow-lg mb-10">
-      {featuredPosts.map((post, index) => (
+      {posts.map((post, index) => (
         <div
-          key={post.id}
+          key={post._id}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out transform ${
             index === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0"
           }`}
@@ -53,10 +65,10 @@ const HeroBanner = () => {
           {/* Image */}
           <div className="relative w-full h-full">
             <Image
-              src={post.image}
+              src={urlFor(post.mainImage).width(1200).height(600).url()}
               alt={post.title}
               fill
-              priority
+              priority={index === current} // prioritize only current image
               style={{ objectFit: "cover" }}
               className="brightness-75"
               sizes="(max-width: 768px) 100vw, 100vw"
@@ -76,7 +88,7 @@ const HeroBanner = () => {
 
       {/* Dots indicator */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-        {featuredPosts.map((_, index) => (
+        {posts.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index)}

@@ -2,30 +2,56 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import articles from '../data/articles';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+
+import { client } from '../../sanity/lib/client';
+import { PortableText } from '@portabletext/react';
 
 const ArticlePage = () => {
   const router = useRouter();
-  const { slug } = router.query;
+  const { category, slug } = router.query;
 
+
+  const [article, setArticle] = useState(null);
+  const [relatedPosts, setRelatedPosts] = useState([]);  // store full list
   const [visibleCount, setVisibleCount] = useState(4);
   const [comments, setComments] = useState([]);
   const [username, setUsername] = useState('');
   const [message, setMessage] = useState('');
 
-  const article = articles.find((a) => a.slug === slug);
-  const relatedPosts = articles
-    .filter((a) => a.slug !== slug)
-    .slice(0, visibleCount);
+  const queryArticleBySlug = `*[_type == "post" && slug.current == $slug][0]{
+    _id, title, slug, publishedAt, body, "author": author->name,
+    "image": mainImage.asset->url, categories[]->{title}, description
+  }`;
+
+  const queryRelatedArticles = `*[_type == "post" && $category in categories[].title && slug.current != $slug] | order(_createdAt desc) {
+    _id, title, slug, description, "image": mainImage.asset->url
+  }`;
 
   useEffect(() => {
-    if (slug) {
-      fetch(`/api/comments/${slug}`)
-        .then((res) => res.json())
-        .then((data) => setComments(data));
-    }
+    if (!slug) return;
+
+    // Fetch the article
+    client.fetch(queryArticleBySlug, { slug }).then((data) => {
+      setArticle(data);
+
+      if (data?.categories?.length > 0) {
+        const category = data.categories[0].title;
+        // Fetch all related posts (no slice here)
+        client.fetch(queryRelatedArticles, { category, slug }).then((posts) => {
+          setRelatedPosts(posts);
+        });
+      } else {
+        setRelatedPosts([]);
+      }
+    });
+
+    // Fetch comments
+    fetch(`/api/comments/${slug}`)
+      .then((res) => res.json())
+      .then((data) => setComments(data));
   }, [slug]);
 
   if (!article) {
@@ -50,30 +76,50 @@ const ArticlePage = () => {
     <>
       <Header />
       <main className="container mx-auto px-4 my-10">
+        {/* Flex container for article content + sidebar */}
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Article Content */}
-          <div className="lg:w-[70%] bg-white shadow-md p-6 rounded-lg">
-            <h1 className="text-3xl font-bold mb-4">{article.title}</h1>
-            <div className="w-full h-64 relative mb-6 rounded overflow-hidden">
-              <Image
-                src={article.image}
-                alt={article.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 70vw"
-                style={{ objectFit: 'cover' }}
-                className="rounded"
-              />
+          <div className="w-full lg:w-[70%] bg-white shadow-md p-6 rounded-lg">
+            <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
+            <p className="text-sm text-gray-600 mb-1">
+              By <span className="font-medium">{article.author}</span> •{' '}
+              {new Date(article.publishedAt).toLocaleDateString()}
+            </p>
+            <p className="text-sm text-gray-500 mb-4">
+              Categories:{' '}
+              {article.categories.map((cat, index) => (
+                <span key={index} className="inline-block mr-1">
+                  {cat.title}
+                  {index < article.categories.length - 1 && ','}
+                </span>
+              ))}
+            </p>
+
+            <div className="w-full aspect-video relative mb-6 rounded overflow-hidden">
+              {article.image ? (
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 70vw"
+                  style={{ objectFit: 'cover' }}
+                  className="rounded"
+                />
+              ) : (
+                <div className="bg-gray-200 w-full h-full flex items-center justify-center rounded">
+                  No Image
+                </div>
+              )}
             </div>
-            <div
-              className="text-lg leading-relaxed space-y-4"
-              dangerouslySetInnerHTML={{ __html: article.content }}
-            />
+
+            <div className="text-lg leading-relaxed space-y-4 text-justify max-w-3xl mx-auto px-4 hyphens-auto">
+              <PortableText value={article.body} />
+            </div>
 
             {/* Comments Section */}
             <section className="mt-12">
               <h2 className="text-2xl font-bold mb-4">🗣 Comments</h2>
 
-              {/* Comment Form */}
               <form
                 onSubmit={async (e) => {
                   e.preventDefault();
@@ -98,9 +144,9 @@ const ArticlePage = () => {
                     name="username"
                     type="text"
                     value={username}
-                    autoComplete="name"
                     onChange={(e) => setUsername(e.target.value)}
                     placeholder="Your Name"
+                    autoComplete="name"
                     required
                     className="w-full border px-4 py-2 rounded"
                   />
@@ -113,8 +159,8 @@ const ArticlePage = () => {
                   <textarea
                     id="message"
                     name="message"
+                    autoComplete="on"
                     value={message}
-                    autoComplete="on" 
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder="Write your comment..."
                     required
@@ -131,7 +177,6 @@ const ArticlePage = () => {
                 </button>
               </form>
 
-              {/* Comments List */}
               <div className="space-y-4">
                 {comments.length === 0 && <p>No comments yet.</p>}
                 {comments.map((cmt) => (
@@ -148,27 +193,27 @@ const ArticlePage = () => {
           </div>
 
           {/* Sidebar */}
-          <div className="lg:w-[30%] space-y-6">
+          <aside className="w-full lg:w-[30%] space-y-6  top-24 self-start">
             <div className="bg-gray-100 p-4 rounded shadow-sm">
               <h2 className="text-xl font-semibold mb-3">సంబంధిత కథనాలు</h2>
               <ul className="space-y-2">
-                {articles
-                  .filter((a) => a.category === article.category && a.slug !== article.slug)
-                  .slice(0, 3)
-                  .map((rel) => (
-                    <li key={rel.slug}>
-                      <Link href={`/${rel.slug}`} className="text-blue-600 hover:underline">
-                        {rel.title}
-                      </Link>
-                    </li>
-                  ))}
+                {relatedPosts.length === 0 && <li>No related posts found.</li>}
+                {relatedPosts.slice(0, visibleCount).map((rel) => (
+                  <li key={rel._id}>
+                    <Link
+                      href={`/${rel.slug.current}`}
+                      className="text-blue-600 hover:underline"
+                    >
+                      {rel.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            {/* Ad */}
             <div className="bg-yellow-100 p-4 rounded shadow-sm text-center">
               <p className="text-sm text-gray-700 font-medium">🌟 Sponsored Ad</p>
-              <div className="my-2 relative w-full h-40 rounded overflow-hidden">
+              <div className="my-2 relative w-full aspect-video rounded overflow-hidden">
                 <Image
                   src="/images/ai-life.jpg"
                   alt="Ad"
@@ -182,30 +227,36 @@ const ArticlePage = () => {
                 మీ ఇంటిని మిగతావారికంటే ముందుగా మార్చుకోండి! ఇప్పుడు ఆర్డర్ చేయండి!
               </p>
             </div>
-          </div>
+          </aside>
         </div>
 
         {/* Related Posts Section */}
         <section className="mt-12">
           <h2 className="text-2xl font-bold mb-6">📚 Related Posts You May Like</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedPosts.map((post) => (
-              <div key={post.slug} className="bg-white p-4 rounded shadow-md">
-                <div className="relative w-full h-40 mb-3 rounded overflow-hidden">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                    style={{ objectFit: 'cover' }}
-                    className="rounded"
-                  />
+            {relatedPosts.slice(0, visibleCount).map((post) => (
+              <div key={post._id} className="bg-white p-4 rounded shadow-md">
+                <div className="relative w-full aspect-video mb-3 rounded overflow-hidden">
+                  {post.image ? (
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      style={{ objectFit: 'cover' }}
+                      className="rounded"
+                    />
+                  ) : (
+                    <div className="bg-gray-200 w-full h-full flex items-center justify-center rounded">
+                      No Image
+                    </div>
+                  )}
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
                 <p className="text-sm text-gray-600 line-clamp-3">{post.description}</p>
                 <Link
-                  href={`/${post.slug}`}
-                  className="text-blue-500 hover:underline text-sm mt-2 inline-block cursor-pointer"
+                  href={`/${post.slug.current}`}
+                  className="text-blue-500 hover:underline text-sm mt-2 inline-block"
                 >
                   Read more →
                 </Link>
@@ -213,16 +264,13 @@ const ArticlePage = () => {
             ))}
           </div>
 
-          {/* Load More Button */}
-          {visibleCount < articles.length && (
-            <div className="mt-8 text-center">
-              <button
-                onClick={() => setVisibleCount((prev) => prev + 4)}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow"
-              >
-                Load More
-              </button>
-            </div>
+          {relatedPosts.length > visibleCount && (
+            <button
+              onClick={() => setVisibleCount(visibleCount + 4)}
+              className="mt-6 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Load More
+            </button>
           )}
         </section>
       </main>
