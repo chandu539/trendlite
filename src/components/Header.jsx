@@ -68,7 +68,7 @@ const Header = () => {
           <Link href="/tech" className="block text-white">📱 Tech</Link>
           <Link href="/movies" className="block text-white">🎬 Movies</Link>
           <Link href="/health" className="block text-white">❤️ Health</Link>
-          <Link href="/inventions" className="block text-white">💡 Inventions</Link>cd 
+          <Link href="/inventions" className="block text-white">💡 Inventions</Link>
           <div className="relative">
             <input
               id="mobile-search-input"
