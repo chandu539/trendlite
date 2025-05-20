@@ -32,10 +32,11 @@ const ArticleCard = ({ title, slug, image, introduction, category, publishedAt }
 
             <Link
               href={`/${category}/${slug}`}
-              className="inline-block text-sm font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+              className="inline-block px-4 py-2 w-35 bg-gray-700 text-white font-semibold rounded-md hover:bg-gray-600 hover:text-yellow-300 transition-colors duration-100"
             >
               Read More →
             </Link>
+
           </div>
         </div>
       </div>

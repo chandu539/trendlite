@@ -1,51 +1,10 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ArticleCard from '../components/ArticleCard';
 import { client } from '../sanity/lib/client'; // Sanity client setup
 
-export default function HealthPage() {
-  const [healthArticles, setHealthArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const query = `*[_type == "post" && "health" in categories[]->title] | order(publishedAt desc){
-      _id,
-      title,
-      slug,
-      "image": mainImage.asset->url,
-      introduction,
-      categories[]->{
-          title
-        },
-      publishedAt
-    }`;
-
-    client.fetch(query)
-      .then(data => {
-        setHealthArticles(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Sanity fetch error:", err);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return (
-      <>
-        <Header />
-        <main className="container mx-auto px-4 mt-6 text-center">
-          <p>Loading health articles...</p>
-        </main>
-        <Footer />
-      </>
-    );
-  }
-
+export default function HealthPage({ healthArticles }) {
   return (
     <>
       <Header />
@@ -92,4 +51,37 @@ export default function HealthPage() {
       <Footer />
     </>
   );
+}
+
+// ✅ Fetch data at build time
+export async function getStaticProps() {
+  const query = `*[_type == "post" && "health" in categories[]->title] | order(publishedAt desc){
+    _id,
+    title,
+    slug,
+    "image": mainImage.asset->url,
+    introduction,
+    categories[]->{
+        title
+      },
+    publishedAt
+  }`;
+
+  try {
+    const healthArticles = await client.fetch(query);
+
+    return {
+      props: {
+        healthArticles,
+      },
+      revalidate: 60, // Optional: Regenerates every 60 seconds if a request comes in
+    };
+  } catch (error) {
+    console.error("Sanity fetch error:", error);
+    return {
+      props: {
+        healthArticles: [],
+      },
+    };
+  }
 }

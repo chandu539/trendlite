@@ -1,6 +1,8 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { useState } from 'react';
+import Head from 'next/head';
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -38,6 +40,26 @@ export default function ContactPage() {
 
   return (
     <div>
+      <Head>
+        <title>Contact Us | TrendLite - Connect with Our Team</title>
+        <meta
+          name="description"
+          content="Get in touch with the TrendLite team for feedback, collaborations, or any inquiries. We're here to connect with our readers and partners."
+        />
+        <meta name="keywords" content="Contact TrendLite, Contact Telugu Blog, Feedback, Collaboration, TrendLite Team" />
+        <meta name="author" content="TrendLite Team" />
+
+        {/* Open Graph (OG) Tags for Social Sharing */}
+        <meta property="og:title" content="Contact Us | TrendLite" />
+        <meta property="og:description" content="Reach out to TrendLite for feedback, partnerships, or any questions. We'd love to hear from you!" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://trendlite.vercel.app/contact" />
+        <meta property="og:image" content="https://trendlite.vercel.app/trendlite-og.png" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://trendlite.vercel.app/contact" />
+      </Head>
+
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 px-6 py-12 flex justify-center items-center">
         <div className="w-full max-w-2xl bg-white p-10 rounded-2xl shadow-xl border border-gray-100">
@@ -106,7 +128,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-200 shadow-md"
+              className="w-full bg-gray-700 text-white font-semibold py-3 rounded-lg hover:bg-gray-800 transition duration-200 shadow-md"
             >
               Send Message
             </button>

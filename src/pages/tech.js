@@ -1,50 +1,38 @@
-"use client";
+// pages/tech/index.js
 
-import React, { useEffect, useState } from "react";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ArticleCard from '../components/ArticleCard';
-import { client } from '../sanity/lib/client'; // sanity client setup
+import { createClient } from 'next-sanity';
 
-export default function TechPage() {
-  const [techArticles, setTechArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  apiVersion: '2023-01-01',
+  useCdn: true,
+});
 
-  useEffect(() => {
-    const query = `*[_type == "post" && references(*[_type=="category" && title=="tech"]._id)] | order(publishedAt desc){
-      title,
-      slug,
-      "image": mainImage.asset->url,
-      introduction,
-       categories[]->{
-          title
-        },
-      publishedAt
-    }`;
+export async function getStaticProps() {
+  const query = `*[_type == "post" && references(*[_type=="category" && title=="tech"]._id)] | order(publishedAt desc){
+    title,
+    slug,
+    "image": mainImage.asset->url,
+    introduction,
+    categories[]->{ title },
+    publishedAt
+  }`;
 
-    client.fetch(query)
-      .then(data => {
-        setTechArticles(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Sanity fetch error:", err);
-        setLoading(false);
-      });
-  }, []);
+  const techArticles = await client.fetch(query);
 
-  if (loading) {
-    return (
-      <>
-        <Header />
-        <main className="container mx-auto px-4 mt-6 text-center">
-          <p>Loading tech articles...</p>
-        </main>
-        <Footer />
-      </>
-    );
-  }
+  return {
+    props: {
+      techArticles,
+    },
+    revalidate: 60, // optional: regenerate every 60 seconds
+  };
+}
 
+export default function TechPage({ techArticles }) {
   return (
     <>
       <Header />
@@ -63,7 +51,7 @@ export default function TechPage() {
                   image={article.image}
                   introduction={article.introduction}
                   publishedAt={article.publishedAt}
-                  category={article.categories[0]?.title.toLowerCase()} 
+                  category={article.categories[0]?.title.toLowerCase()}
                 />
               ))
             ) : (

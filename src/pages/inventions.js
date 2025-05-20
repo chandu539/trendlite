@@ -1,51 +1,10 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ArticleCard from '../components/ArticleCard';
 import { client } from '../sanity/lib/client'; // Sanity client setup
 
-export default function InventionsPage() {
-  const [inventionArticles, setInventionArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const query = `*[_type == "post" && "inventions" in categories[]->title] | order(publishedAt desc){
-      _id,
-      title,
-      slug,
-      "image": mainImage.asset->url,
-      introduction,
-      categories[]->{
-          title
-        },
-      publishedAt
-    }`;
-
-    client.fetch(query)
-      .then(data => {
-        setInventionArticles(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Sanity fetch error:", err);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return (
-      <>
-        <Header />
-        <main className="container mx-auto px-4 mt-6 text-center">
-          <p>Loading inventions articles...</p>
-        </main>
-        <Footer />
-      </>
-    );
-  }
-
+export default function InventionsPage({ inventionArticles }) {
   return (
     <>
       <Header />
@@ -92,4 +51,37 @@ export default function InventionsPage() {
       <Footer />
     </>
   );
+}
+
+// ✅ Fetch data at build time
+export async function getStaticProps() {
+  const query = `*[_type == "post" && "inventions" in categories[]->title] | order(publishedAt desc){
+    _id,
+    title,
+    slug,
+    "image": mainImage.asset->url,
+    introduction,
+    categories[]->{
+        title
+      },
+    publishedAt
+  }`;
+
+  try {
+    const inventionArticles = await client.fetch(query);
+
+    return {
+      props: {
+        inventionArticles,
+      },
+      revalidate: 60, // Optional: Rebuild page every 60 seconds if new request comes in
+    };
+  } catch (error) {
+    console.error("Sanity fetch error:", error);
+    return {
+      props: {
+        inventionArticles: [],
+      },
+    };
+  }
 }

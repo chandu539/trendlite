@@ -6,14 +6,25 @@ export default function AboutPage() {
   return (
     <>
       <Head>
-        <title>About Us | TrendLite - The Pulse of Tech &amp; Life</title>
+        <title>About Us | TrendLite - The Pulse of Tech & Life</title>
         <meta
           name="description"
           content="Learn more about TrendLite - a blog that brings you trending insights in Tech, Movies, Health, and Inventions. We inspire, inform, and entertain our Telugu readers."
         />
         <meta name="keywords" content="About TrendLite, Telugu Tech Blog, Telugu Movies Review, Health Tips Telugu, Inventions, Lifestyle, Blogging" />
         <meta name="author" content="TrendLite Team" />
+
+        {/* Open Graph (OG) tags for better sharing on social media */}
+        <meta property="og:title" content="About Us | TrendLite - The Pulse of Tech & Life" />
+        <meta property="og:description" content="Learn more about TrendLite - a blog that brings trending insights in Tech, Movies, Health, and Inventions." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://trendlite.vercel.app/about" />
+        <meta property="og:image" content="https://trendlite.vercel.app/trendlite-og.png" />
+
+        {/* Canonical link to avoid duplicate SEO issues */}
+        <link rel="canonical" href="https://trendlite.vercel.app/about" />
       </Head>
+
 
       <div className="min-h-screen flex flex-col justify-between">
         <Header />

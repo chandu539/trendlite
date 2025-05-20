@@ -1,58 +1,21 @@
-import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { PortableText } from '@portabletext/react';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-
 import { client } from '../../sanity/lib/client';
-import { PortableText } from '@portabletext/react';
 
-const ArticlePage = () => {
+const ArticlePage = ({ article, relatedPosts, initialComments }) => {
   const router = useRouter();
-  const { category, slug } = router.query;
+  const { slug } = router.query;
 
-
-  const [article, setArticle] = useState(null);
-  const [relatedPosts, setRelatedPosts] = useState([]);  // store full list
-  const [visibleCount, setVisibleCount] = useState(4);
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState(initialComments || []);
   const [username, setUsername] = useState('');
   const [message, setMessage] = useState('');
-
-  const queryArticleBySlug = `*[_type == "post" && slug.current == $slug][0]{
-    _id, title, slug, publishedAt, body, "author": author->name,
-    "image": mainImage.asset->url, categories[]->{title}, description
-  }`;
-
-  const queryRelatedArticles = `*[_type == "post" && $category in categories[].title && slug.current != $slug] | order(_createdAt desc) {
-    _id, title, slug, description, "image": mainImage.asset->url
-  }`;
-
-  useEffect(() => {
-    if (!slug) return;
-
-    // Fetch the article
-    client.fetch(queryArticleBySlug, { slug }).then((data) => {
-      setArticle(data);
-
-      if (data?.categories?.length > 0) {
-        const category = data.categories[0].title;
-        // Fetch all related posts (no slice here)
-        client.fetch(queryRelatedArticles, { category, slug }).then((posts) => {
-          setRelatedPosts(posts);
-        });
-      } else {
-        setRelatedPosts([]);
-      }
-    });
-
-    // Fetch comments
-    fetch(`/api/comments/${slug}`)
-      .then((res) => res.json())
-      .then((data) => setComments(data));
-  }, [slug]);
+  const [visibleCount, setVisibleCount] = useState(4);
 
   if (!article) {
     return (
@@ -76,9 +39,7 @@ const ArticlePage = () => {
     <>
       <Header />
       <main className="container mx-auto px-4 my-10">
-        {/* Flex container for article content + sidebar */}
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Article Content */}
           <div className="w-full lg:w-[70%] bg-white shadow-md p-6 rounded-lg">
             <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
             <p className="text-sm text-gray-600 mb-1">
@@ -141,34 +102,28 @@ const ArticlePage = () => {
                   </label>
                   <input
                     id="username"
-                    name="username"
                     type="text"
+                    autoComplete='username'
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Your Name"
-                    autoComplete="name"
                     required
                     className="w-full border px-4 py-2 rounded"
                   />
                 </div>
-
                 <div>
                   <label htmlFor="message" className="block mb-1 font-semibold">
                     Write your comment
                   </label>
                   <textarea
                     id="message"
-                    name="message"
-                    autoComplete="on"
                     value={message}
+                    autoComplete='on'
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Write your comment..."
                     required
                     rows={4}
                     className="w-full border px-4 py-2 rounded"
                   />
                 </div>
-
                 <button
                   type="submit"
                   className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
@@ -193,17 +148,14 @@ const ArticlePage = () => {
           </div>
 
           {/* Sidebar */}
-          <aside className="w-full lg:w-[30%] space-y-6  top-24 self-start">
+          <aside className="w-full lg:w-[30%] space-y-6 top-24 self-start">
             <div className="bg-gray-100 p-4 rounded shadow-sm">
               <h2 className="text-xl font-semibold mb-3">సంబంధిత కథనాలు</h2>
               <ul className="space-y-2">
                 {relatedPosts.length === 0 && <li>No related posts found.</li>}
                 {relatedPosts.slice(0, visibleCount).map((rel) => (
                   <li key={rel._id}>
-                    <Link
-                      href={`/${rel.slug.current}`}
-                      className="text-blue-600 hover:underline"
-                    >
+                    <Link href={`/${rel.slug.current}`} className="text-blue-600 hover:underline">
                       {rel.title}
                     </Link>
                   </li>
@@ -280,3 +232,57 @@ const ArticlePage = () => {
 };
 
 export default ArticlePage;
+
+// ✅ Pre-rendering with getStaticPaths
+export async function getStaticPaths() {
+  const query = `*[_type == "post"]{ slug, categories[]->{title} }`;
+  const posts = await client.fetch(query);
+
+  const paths = posts.map((post) => ({
+    params: {
+      category: post.categories?.[0]?.title || 'general',
+      slug: post.slug.current,
+    },
+  }));
+
+  return { paths, fallback: 'blocking' };
+}
+
+// ✅ Pre-rendering with getStaticProps
+export async function getStaticProps({ params }) {
+  const { slug } = params;
+
+  const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+  const queryArticleBySlug = `*[_type == "post" && slug.current == $slug][0]{
+    _id, title, slug, publishedAt, body, "author": author->name,
+    "image": mainImage.asset->url, categories[]->{title}, description
+  }`;
+
+  const article = await client.fetch(queryArticleBySlug, { slug });
+
+  if (!article) {
+    return { notFound: true };
+  }
+
+  const category = article.categories?.[0]?.title;
+
+  const queryRelatedArticles = `*[_type == "post" && $category in categories[].title && slug.current != $slug] | order(_createdAt desc) {
+    _id, title, slug, description, "image": mainImage.asset->url
+  }`;
+
+  const relatedPosts = await client.fetch(queryRelatedArticles, { category, slug });
+
+  // Use baseURL here:
+  const commentsRes = await fetch(`${baseURL}/api/comments/${slug}`);
+  const initialComments = await commentsRes.json();
+
+  return {
+    props: {
+      article,
+      relatedPosts,
+      initialComments,
+    },
+    revalidate: 60, // ISR support: rebuild every 60 seconds
+  };
+}
