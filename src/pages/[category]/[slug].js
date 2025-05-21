@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import { PortableText } from '@portabletext/react';
 
@@ -37,6 +39,23 @@ const ArticlePage = ({ article, relatedPosts, initialComments }) => {
 
   return (
     <>
+      <Head>
+        <title>{`${article.title} | TrendLite`}</title>
+        <meta name="description" content={article.description || 'Read this amazing article on our blog.'} />
+        <meta name="keywords" content={article.categories.map(cat => cat.title).join(', ')} />
+        <meta name="author" content={article.author} />
+        <meta property="og:title" content={article.title} />
+        <meta property="og:description" content={article.description || 'Check out this article.'} />
+        <meta property="og:image" content={article.image} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://trendlite.vercel.app/${article.slug.current}`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={article.title} />
+        <meta name="twitter:description" content={article.description || 'Explore this post on our blog.'} />
+        <meta name="twitter:image" content={article.image} />
+        <link rel="canonical" href={`https://trendlite.vercel.app/${article.slug.current}`} />
+      </Head>
+
       <Header />
       <main className="container mx-auto px-4 my-10">
         <div className="flex flex-col lg:flex-row gap-8">
@@ -44,7 +63,7 @@ const ArticlePage = ({ article, relatedPosts, initialComments }) => {
             <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
             <p className="text-sm text-gray-600 mb-1">
               By <span className="font-medium">{article.author}</span> •{' '}
-              {new Date(article.publishedAt).toLocaleDateString()}
+              {format(new Date(article.publishedAt), 'yyyy-MM-dd')}
             </p>
             <p className="text-sm text-gray-500 mb-4">
               Categories:{' '}
@@ -65,6 +84,7 @@ const ArticlePage = ({ article, relatedPosts, initialComments }) => {
                   sizes="(max-width: 768px) 100vw, 70vw"
                   style={{ objectFit: 'cover' }}
                   className="rounded"
+                  priority
                 />
               ) : (
                 <div className="bg-gray-200 w-full h-full flex items-center justify-center rounded">
@@ -139,7 +159,7 @@ const ArticlePage = ({ article, relatedPosts, initialComments }) => {
                     <p className="font-semibold">{cmt.username}</p>
                     <p className="text-gray-700">{cmt.message}</p>
                     <p className="text-sm text-gray-400">
-                      {new Date(cmt.createdAt).toLocaleString()}
+                      {format(new Date(cmt.createdAt), 'yyyy-MM-dd HH:mm:ss')}
                     </p>
                   </div>
                 ))}

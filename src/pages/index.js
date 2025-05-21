@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ArticleCard from '../components/ArticleCard';
 import { createClient } from 'next-sanity';
+import Head from 'next/head';
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -38,6 +39,42 @@ export async function getStaticProps() {
 export default function Home({ articles }) {
   return (
     <>
+      <Head>
+        <title>TrendLite | Tech, Movies, Health & Invention Blogs in English</title>
+        <meta
+          name="description"
+          content="Stay updated with the latest articles on Technology, Movies, Health, and Inventions in English. TrendLite brings trending content, tips, and reviews for everyone."
+        />
+        <meta
+          name="keywords"
+          content="English Blog, Tech News, Movie Reviews, Health Tips, Inventions, Latest Gadgets, Articles, TrendLite"
+        />
+        <meta name="author" content="TrendLite Team" />
+
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="TrendLite | Tech, Movies, Health & Invention Blogs in English" />
+        <meta
+          property="og:description"
+          content="Explore trending content on technology, movies, health, and inventions written in English for native and global readers."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://trendlite.vercel.app/" />
+        <meta property="og:image" content="https://trendlite.vercel.app/trendlite-og.png" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="TrendLite | Tech, Movies, Health & More in English" />
+        <meta
+          name="twitter:description"
+          content="Trending articles in English on Technology, Health, Movies & Lifestyle. Follow TrendLite for daily updates."
+        />
+        <meta name="twitter:image" content="https://trendlite.vercel.app/trendlite-og.png" />
+
+        {/* Canonical Link */}
+        <link rel="canonical" href="https://trendlite.vercel.app/" />
+      </Head>
+
+
       <Header />
       <main className="container mx-auto px-4 mt-6">
         <div className="flex flex-col md:flex-row gap-8 mt-10">

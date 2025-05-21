@@ -1,16 +1,23 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { format } from 'date-fns'; // ✅ Import from date-fns
+import { format, isValid } from 'date-fns';
 
 const ArticleCard = ({ title, slug, image, introduction, category, publishedAt }) => {
-  // ✅ Consistent date formatting using date-fns
-  const formattedDate = format(new Date(publishedAt), 'dd MMM yyyy'); // e.g., 19 May 2025
+  let formattedDate = '';
+
+  if (publishedAt) {
+    const date = new Date(publishedAt);
+    // Check if date is valid
+    formattedDate = isValid(date) ? format(date, 'dd MMM yyyy') : '';
+  }
 
   return (
     <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-indigo-100">
       <div className="p-6">
         <h3 className="text-2xl font-bold text-gray-900 mb-1">{title}</h3>
-        <p className="text-sm text-gray-500 mb-4">{formattedDate}</p>
+        {formattedDate && (
+          <p className="text-sm text-gray-500 mb-4">{formattedDate}</p>
+        )}
 
         <div className="flex flex-col md:flex-row gap-6">
           {/* Image */}
@@ -19,6 +26,7 @@ const ArticleCard = ({ title, slug, image, introduction, category, publishedAt }
               src={image}
               alt={title}
               fill
+              priority
               className="object-cover rounded-xl"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
@@ -36,7 +44,6 @@ const ArticleCard = ({ title, slug, image, introduction, category, publishedAt }
             >
               Read More →
             </Link>
-
           </div>
         </div>
       </div>

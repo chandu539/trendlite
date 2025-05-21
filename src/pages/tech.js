@@ -4,6 +4,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ArticleCard from '../components/ArticleCard';
 import { createClient } from 'next-sanity';
+import Head from 'next/head';
+
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -35,6 +37,42 @@ export async function getStaticProps() {
 export default function TechPage({ techArticles }) {
   return (
     <>
+      <Head>
+        <title>Tech - TrendLite</title>
+        <meta
+          name="description"
+          content="Explore English-language Telugu tech articles on gadgets, AI, mobile apps, and innovation. Stay ahead with TrendLite."
+        />
+
+        <meta
+          name="keywords"
+          content="Telugu Tech Blog, English Tech News, AI Updates, Gadgets 2025, Mobile Reviews, TrendLite Tech, Tech Articles in English"
+        />
+        <meta name="author" content="TrendLite Team" />
+
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="English-language Telugu Tech Articles | TrendLite" />
+        <meta
+          property="og:description"
+          content="Stay updated with trending Telugu tech articles written in English, covering AI, innovations, gadgets, and more."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://trendlite.vercel.app/tech" />
+        <meta property="og:image" content="https://trendlite.vercel.app/trendlite-tech-og.png" />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="English-language Telugu Tech News | TrendLite" />
+        <meta
+          name="twitter:description"
+          content="Discover new tech trends, gadgets, and AI stories about Telugu tech, all in English only on TrendLite."
+        />
+        <meta name="twitter:image" content="https://trendlite.vercel.app/trendlite-tech-og.png" />
+
+        {/* Canonical Link */}
+        <link rel="canonical" href="https://trendlite.vercel.app/tech" />
+      </Head>
+
       <Header />
       <main className="container mx-auto px-4 mt-6">
         <h1 className="text-3xl font-bold mb-6">📱 All Tech Articles</h1>

@@ -1,4 +1,5 @@
 import React from "react";
+import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ArticleCard from '../components/ArticleCard';
@@ -7,6 +8,41 @@ import { client } from '../sanity/lib/client'; // Sanity client setup
 export default function InventionsPage({ inventionArticles }) {
   return (
     <>
+      <Head>
+        <title>Inventions - TrendLite</title>
+        <meta
+          name="description"
+          content="Discover the latest technological inventions and innovations with in-depth articles in English on TrendLite. Stay ahead with future-ready insights."
+        />
+        <meta
+          name="keywords"
+          content="Inventions, Technology, Innovations, Future Tech, AI, Robotics, English Tech Articles, TrendLite"
+        />
+        <meta name="author" content="TrendLite Team" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Inventions - TrendLite" />
+        <meta
+          property="og:description"
+          content="Explore cutting-edge inventions and tech breakthroughs in English only on TrendLite."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://trendlite.vercel.app/inventions" />
+        <meta property="og:image" content="https://trendlite.vercel.app/trendlite-inventions-og.png" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Inventions - TrendLite" />
+        <meta
+          name="twitter:description"
+          content="Get the latest updates on revolutionary tech inventions in English from TrendLite."
+        />
+        <meta name="twitter:image" content="https://trendlite.vercel.app/trendlite-inventions-og.png" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://trendlite.vercel.app/inventions" />
+      </Head>
+
       <Header />
       <main className="container mx-auto px-4 mt-6">
         <h1 className="text-3xl font-bold mb-6">💡 All Inventions Articles</h1>

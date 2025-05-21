@@ -1,4 +1,5 @@
 import React from "react";
+import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ArticleCard from '../components/ArticleCard';
@@ -7,6 +8,42 @@ import { client } from '../sanity/lib/client'; // sanity client setup
 export default function MoviesPage({ moviesArticles }) {
   return (
     <>
+      <Head>
+        <title>Movies - TrendLite</title>
+        <meta
+          name="description"
+          content="Read the latest Telugu movie articles, reviews, and entertainment news in English only on TrendLite."
+        />
+        <meta
+          name="keywords"
+          content="Telugu Movies, English Movie Reviews, TrendLite, Entertainment News, Telugu Film Industry"
+        />
+        <meta name="author" content="TrendLite Team" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Movies - TrendLite" />
+        <meta
+          property="og:description"
+          content="Explore English-language Telugu movie reviews, articles, and entertainment stories on TrendLite."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://trendlite.vercel.app/movies" />
+        <meta property="og:image" content="https://trendlite.vercel.app/trendlite-movies-og.png" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Movies - TrendLite" />
+        <meta
+          name="twitter:description"
+          content="Latest English-language articles and updates on Telugu cinema – powered by TrendLite."
+        />
+        <meta name="twitter:image" content="https://trendlite.vercel.app/trendlite-movies-og.png" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://trendlite.vercel.app/movies" />
+      </Head>
+
+
       <Header />
       <main className="container mx-auto px-4 mt-6">
         <h1 className="text-3xl font-bold mb-6">🎬 All Movies Articles</h1>

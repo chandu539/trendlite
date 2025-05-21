@@ -46,7 +46,7 @@ export default function ContactPage() {
           name="description"
           content="Get in touch with the TrendLite team for feedback, collaborations, or any inquiries. We're here to connect with our readers and partners."
         />
-        <meta name="keywords" content="Contact TrendLite, Contact Telugu Blog, Feedback, Collaboration, TrendLite Team" />
+        <meta name="keywords" content="Contact TrendLite, Contact English Blog, Feedback, Collaboration, TrendLite Team" />
         <meta name="author" content="TrendLite Team" />
 
         {/* Open Graph (OG) Tags for Social Sharing */}

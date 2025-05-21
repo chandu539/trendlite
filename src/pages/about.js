@@ -9,14 +9,20 @@ export default function AboutPage() {
         <title>About Us | TrendLite - The Pulse of Tech & Life</title>
         <meta
           name="description"
-          content="Learn more about TrendLite - a blog that brings you trending insights in Tech, Movies, Health, and Inventions. We inspire, inform, and entertain our Telugu readers."
+          content="Learn more about TrendLite - a blog that brings you trending insights in Tech, Movies, Health, and Inventions. We inspire, inform, and entertain with quality English content."
         />
-        <meta name="keywords" content="About TrendLite, Telugu Tech Blog, Telugu Movies Review, Health Tips Telugu, Inventions, Lifestyle, Blogging" />
+        <meta
+          name="keywords"
+          content="About TrendLite, Tech Blog, Movie Reviews, Health Tips, Inventions, Lifestyle, Blogging"
+        />
         <meta name="author" content="TrendLite Team" />
 
         {/* Open Graph (OG) tags for better sharing on social media */}
         <meta property="og:title" content="About Us | TrendLite - The Pulse of Tech & Life" />
-        <meta property="og:description" content="Learn more about TrendLite - a blog that brings trending insights in Tech, Movies, Health, and Inventions." />
+        <meta
+          property="og:description"
+          content="Learn more about TrendLite - a blog that brings trending insights in Tech, Movies, Health, and Inventions."
+        />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://trendlite.vercel.app/about" />
         <meta property="og:image" content="https://trendlite.vercel.app/trendlite-og.png" />
@@ -25,7 +31,6 @@ export default function AboutPage() {
         <link rel="canonical" href="https://trendlite.vercel.app/about" />
       </Head>
 
-
       <div className="min-h-screen flex flex-col justify-between">
         <Header />
 
@@ -33,28 +38,28 @@ export default function AboutPage() {
           <h1 className="text-4xl font-bold mb-6 text-center">About TrendLite</h1>
 
           <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            <strong>TrendLite</strong> is your go-to source for staying in tune with the pulse of modern life — from the latest in <strong>Technology</strong> to reviews of trending <strong>Movies</strong>, valuable <strong>Health</strong> tips, and breakthrough <strong>Inventions</strong>. We write in both English and Telugu to connect deeply with our native-speaking audience.
+            <strong>TrendLite</strong> is your go-to source for staying in tune with the pulse of modern life — from the latest in <strong>Technology</strong> to reviews of trending <strong>Movies</strong>, valuable <strong>Health</strong> tips, and breakthrough <strong>Inventions</strong>. We focus on providing high-quality, engaging, and reliable English content that keeps you informed and entertained.
           </p>
 
           <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            Our mission is to bring high-quality, trustworthy, and engaging content to readers looking to stay updated, entertained, and informed. Whether you&apos;re curious about the newest smartphone under ₹20,000, interested in health benefits of eating vegetables, or exploring futuristic AI gadgets — we&apos;ve got you covered!
+            Our mission is to bring trustworthy and insightful content to readers who want to stay updated on technology, health, entertainment, and innovation. Whether you’re looking for the newest smartphone reviews, wellness advice, or exciting breakthroughs in science and technology — TrendLite has you covered!
           </p>
 
           <p className="mb-4 text-lg leading-relaxed text-gray-700">
             <strong>Why follow TrendLite?</strong><br />
-            - 📱 Detailed tech reviews in your language<br />
-            - 🎬 Honest movie reviews with cultural depth<br />
+            - 📱 In-depth tech reviews and news<br />
+            - 🎬 Honest and insightful movie reviews<br />
             - ❤️ Health and wellness tips backed by research<br />
-            - 💡 Cutting-edge invention updates &amp; science news<br />
-            - 📝 Articles tailored for Telugu-speaking readers worldwide
+            - 💡 Latest updates on inventions and innovations<br />
+            - 📝 Thoughtfully crafted articles for curious minds
           </p>
 
           <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            We believe information should be accessible, reliable, and enjoyable. That&apos;s why we aim to create content that&apos;s easy to understand and hard to forget.
+            We believe information should be accessible, reliable, and enjoyable. That’s why we strive to create content that’s easy to understand and hard to forget.
           </p>
 
           <p className="text-lg leading-relaxed text-gray-700">
-            Thank you for being a part of the TrendLite community. We&apos;re just getting started — and we&apos;re thrilled to have you along for the journey!
+            Thank you for being a part of the TrendLite community. We’re excited to grow and share this journey with you!
           </p>
         </main>
 
