@@ -98,7 +98,7 @@ export default function PrivacyPolicyPage() {
           </p>
           <ul className="list-disc ml-6 mb-6">
             <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
-            <li><strong>Company</strong> (referred to as "We", "Us" or "Our") refers to TrendLite.</li>
+            <li><strong>Company</strong> (referred to as &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot;) refers to TrendLite.</li>
             <li><strong>Cookies</strong> are small files placed on Your device by a website to track browsing activity and enhance user experience.</li>
             <li><strong>Country</strong> refers to AndhraPradesh, India.</li>
             <li><strong>Device</strong> means any device such as a computer, cellphone or tablet that can access the Service.</li>
@@ -170,35 +170,30 @@ export default function PrivacyPolicyPage() {
             <li>Request data portability.</li>
           </ul>
           <p className="mb-6">
-            To exercise these rights, please contact us at <a href="mailto:support@trendlite.online" className="text-blue-600 underline">support@trendlite.online</a>.
+            To exercise these rights, please contact us at <a href="mailto:privacy@trendlite.com" className="text-blue-600 underline">privacy@trendlite.com</a>.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Data Security</h2>
           <p className="mb-6">
-            We are committed to protecting your personal data. We implement reasonable security measures designed to protect your information from unauthorized access, alteration, disclosure, or destruction. However, no internet transmission is 100% secure, and we cannot guarantee absolute security.
+            We implement appropriate security measures to protect your personal data from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.
           </p>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Children’s Privacy</h2>
+          <h2 className="text-2xl font-semibold mt-8 mb-4">Children's Privacy</h2>
           <p className="mb-6">
-            Our Service is not intended for individuals under the age of 13. We do not knowingly collect personal data from children under 13. If we learn that we have collected personal data from a child under 13, we will take steps to delete that information promptly.
+            Our Service is not intended for individuals under the age of 13. We do not knowingly collect personal data from children under 13. If you are a parent or guardian and believe your child has provided us personal data, please contact us to request its deletion.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Changes to This Privacy Policy</h2>
           <p className="mb-6">
-            We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. You are advised to review this Privacy Policy periodically for any changes.
+            We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page with an updated date.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
           <p className="mb-6">
-            If you have any questions about this Privacy Policy or our data practices, please contact us at:
+            If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@trendlite.com" className="text-blue-600 underline">privacy@trendlite.com</a>.
           </p>
-          <address className="not-italic mb-6">
-            TrendLite<br />
-            Eluru, AndhraPradesh, India<br />
-            Email: <a href="mailto:support@trendlite.online" className="text-blue-600 underline">support@trendlite.online</a>
-          </address>
 
-          <p className="text-sm text-center text-gray-500 mt-12">
+          <p className="text-center text-sm text-gray-500 mt-12">
             &copy; 2025 TrendLite. All rights reserved.
           </p>
         </main>
