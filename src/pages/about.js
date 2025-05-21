@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import Link from 'next/link';
 
 export default function AboutPage() {
   return (
@@ -9,58 +10,78 @@ export default function AboutPage() {
         <title>About Us | TrendLite - The Pulse of Tech & Life</title>
         <meta
           name="description"
-          content="Learn more about TrendLite - a blog that brings you trending insights in Tech, Movies, Health, and Inventions. We inspire, inform, and entertain with quality English content."
+          content="Learn more about TrendLite, our mission, vision, and the team behind the pulse of tech and life."
         />
         <meta
           name="keywords"
-          content="About TrendLite, Tech Blog, Movie Reviews, Health Tips, Inventions, Lifestyle, Blogging"
+          content="About TrendLite, Tech Blog, Lifestyle Blog, Our Mission, Our Team"
         />
         <meta name="author" content="TrendLite Team" />
+        <link rel="canonical" href="https://www.trendlite.com/about" />
 
-        {/* Open Graph (OG) tags for better sharing on social media */}
+        {/* Open Graph Meta Tags */}
         <meta property="og:title" content="About Us | TrendLite - The Pulse of Tech & Life" />
         <meta
           property="og:description"
-          content="Learn more about TrendLite - a blog that brings trending insights in Tech, Movies, Health, and Inventions."
+          content="Discover the story behind TrendLite and how we bring you the latest in tech and lifestyle."
         />
+        <meta property="og:url" content="https://www.trendlite.com/about" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://trendlite.vercel.app/about" />
-        <meta property="og:image" content="https://trendlite.vercel.app/trendlite-og.png" />
+        <meta property="og:image" content="https://www.trendlite.com/og-image.jpg" />
 
-        {/* Canonical link to avoid duplicate SEO issues */}
-        <link rel="canonical" href="https://trendlite.vercel.app/about" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Us | TrendLite" />
+        <meta
+          name="twitter:description"
+          content="Learn about TrendLite’s mission, vision, and values."
+        />
+        <meta name="twitter:image" content="https://www.trendlite.com/og-image.jpg" />
       </Head>
 
       <div className="min-h-screen flex flex-col justify-between">
         <Header />
 
-        <main className="max-w-4xl mx-auto px-4 py-10">
-          <h1 className="text-4xl font-bold mb-6 text-center">About TrendLite</h1>
+        <main className="max-w-4xl mx-auto px-4 py-10 text-gray-800">
+          <h1 className="text-4xl font-bold mb-6 text-center">About Us</h1>
 
-          <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            <strong>TrendLite</strong> is your go-to source for staying in tune with the pulse of modern life — from the latest in <strong>Technology</strong> to reviews of trending <strong>Movies</strong>, valuable <strong>Health</strong> tips, and breakthrough <strong>Inventions</strong>. We focus on providing high-quality, engaging, and reliable English content that keeps you informed and entertained.
+          <p className="mb-6 text-lg leading-relaxed">
+            Welcome to <strong>TrendLite</strong>, your go-to source for the latest news, trends, and insights in technology and lifestyle.
+            Our mission is to provide readers with high-quality content that informs, inspires, and empowers.
           </p>
 
-          <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            Our mission is to bring trustworthy and insightful content to readers who want to stay updated on technology, health, entertainment, and innovation. Whether you’re looking for the newest smartphone reviews, wellness advice, or exciting breakthroughs in science and technology — TrendLite has you covered!
+          <h2 className="text-2xl font-semibold mt-8 mb-4">Our Mission</h2>
+          <p className="mb-6 text-lg leading-relaxed">
+            At TrendLite, we strive to keep you updated with the pulse of tech innovations and lifestyle advancements.
+            We believe that technology shapes our future, and staying informed helps you make better decisions in your personal and professional life.
           </p>
 
-          <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            <strong>Why follow TrendLite?</strong><br />
-            - 📱 In-depth tech reviews and news<br />
-            - 🎬 Honest and insightful movie reviews<br />
-            - ❤️ Health and wellness tips backed by research<br />
-            - 💡 Latest updates on inventions and innovations<br />
-            - 📝 Thoughtfully crafted articles for curious minds
+          <h2 className="text-2xl font-semibold mt-8 mb-4">Our Vision</h2>
+          <p className="mb-6 text-lg leading-relaxed">
+            We envision a world where technology and lifestyle blend seamlessly to improve well-being and productivity.
+            Through our articles, tutorials, and guides, we want to build a knowledgeable community passionate about innovation and growth.
           </p>
 
-          <p className="mb-4 text-lg leading-relaxed text-gray-700">
-            We believe information should be accessible, reliable, and enjoyable. That’s why we strive to create content that’s easy to understand and hard to forget.
+          <h2 className="text-2xl font-semibold mt-8 mb-4">Meet the Team</h2>
+          <p className="mb-6 text-lg leading-relaxed">
+            TrendLite is powered by a diverse group of tech enthusiasts, writers, and creatives dedicated to delivering accurate and engaging content.
+            Our team works hard to research, write, and curate articles that resonate with you.
           </p>
 
-          <p className="text-lg leading-relaxed text-gray-700">
-            Thank you for being a part of the TrendLite community. We’re excited to grow and share this journey with you!
+          <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
+          <p className="mb-6 text-lg leading-relaxed">
+            We’d love to hear from you! Whether you have questions, feedback, or collaboration ideas, feel free to reach out.
           </p>
+          <ul className="list-disc ml-6 mb-12">
+            <li>Email: <a href="mailto:contact@trendlite.com" className="text-blue-600 underline">contact@trendlite.com</a></li>
+            <li>Address: TrendLite, AndhraPradesh, India</li>
+          </ul>
+
+          <div className="text-center">
+            <Link href="/" className="text-blue-600 hover:underline">
+              Back to Home
+            </Link>
+          </div>
         </main>
 
         <Footer />
