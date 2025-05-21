@@ -2,6 +2,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 
 export default function ContactPage() {
@@ -135,6 +136,12 @@ export default function ContactPage() {
           </form>
         </div>
       </div>
+      <div className="text-center mt-10">
+        <Link href="/" className="text-blue-600 underline">
+          ← Back to Home
+        </Link>
+      </div>
+
       <Footer />
     </div>
   );

@@ -7,7 +7,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <Head>
-        <title>Privacy Policy | TrendLite - The Pulse of Tech & Life</title>
+        <title>Privacy Policy | TrendLite - The Pulse of Tech &amp; Life</title>
         <meta
           name="description"
           content="This Privacy Policy explains how TrendLite collects, uses, and protects your personal data while you use our website and services."
@@ -22,7 +22,7 @@ export default function PrivacyPolicyPage() {
         {/* Open Graph Meta Tags */}
         <meta
           property="og:title"
-          content="Privacy Policy | TrendLite - The Pulse of Tech & Life"
+          content="Privacy Policy | TrendLite - The Pulse of Tech &amp; Life"
         />
         <meta
           property="og:description"
@@ -178,24 +178,27 @@ export default function PrivacyPolicyPage() {
             We implement appropriate security measures to protect your personal data from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.
           </p>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Children's Privacy</h2>
+          <h2 className="text-2xl font-semibold mt-8 mb-4">Children&apos;s Privacy</h2>
           <p className="mb-6">
-            Our Service is not intended for individuals under the age of 13. We do not knowingly collect personal data from children under 13. If you are a parent or guardian and believe your child has provided us personal data, please contact us to request its deletion.
+            Our Service is not intended for individuals under the age of 13. We do not knowingly collect personal data from children under 13. If you are a parent or guardian and believe your child has provided us personal data, please contact us immediately.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Changes to This Privacy Policy</h2>
           <p className="mb-6">
-            We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page with an updated date.
+            We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last updated&quot; date at the top. You are advised to review this Privacy Policy periodically for any changes.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
           <p className="mb-6">
-            If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@trendlite.com" className="text-blue-600 underline">privacy@trendlite.com</a>.
+            If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@trendlite.com" className="text-blue-600 underline">support@trendlite.com</a>.
           </p>
 
-          <p className="text-center text-sm text-gray-500 mt-12">
-            &copy; 2025 TrendLite. All rights reserved.
-          </p>
+         <div className="text-center mt-10">
+          <Link href="/" className="text-blue-600 underline">
+            ← Back to Home
+          </Link>
+        </div>
+
         </main>
 
         <Footer />
