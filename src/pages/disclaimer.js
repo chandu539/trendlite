@@ -77,8 +77,9 @@ export default function DisclaimerPage() {
           </p>
 
           <p className="mb-6 text-lg leading-relaxed">
-            The information provided by TrendLite ("we", "us", or "our") on our website is for general informational purposes only. All information on the Site is provided in good faith; however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, or completeness of any information on the Site.
+            The information provided by TrendLite (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) on our website is for general informational purposes only. All information on the Site is provided in good faith; however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, or completeness of any information on the Site.
           </p>
+
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">External Links Disclaimer</h2>
           <p className="mb-6">
