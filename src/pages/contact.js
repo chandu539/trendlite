@@ -135,9 +135,10 @@ export default function ContactPage() {
             </button>
           </form>
         </div>
+        
       </div>
       <div className="text-center mt-10">
-        <Link href="/" className="text-blue-600 underline">
+        <Link href="/" className="text-blue-600 ">
           ← Back to Home
         </Link>
       </div>

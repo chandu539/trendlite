@@ -11,20 +11,22 @@ const Header = () => {
       <div className="container mx-auto px-4 h-20 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
-          <img
-            src="/logo.webp"
-            alt="TrendLite - The pulse of Tech & Life"
-            className="h-25 w-auto mt-3.5 ml-1 mr-1" // Set height instead of fixed width
-          />
+          <Link href="/">
+            <img
+              src="/logo.webp"
+              alt="TrendLite - The pulse of Tech & Life"
+              className="h-25 w-auto mt-3.5 ml-1 mr-1" // Set height instead of fixed width
+            />
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6 items-center">
           <Link href="/" className="hover:text-yellow-300">🏠 Home</Link>
           <Link href="/tech" className="hover:text-yellow-300">📱 Tech</Link>
-          <Link href="/movies" className="hover:text-yellow-300">🎬 Movies</Link>
           <Link href="/health" className="hover:text-yellow-300">❤️ Health</Link>
-          <Link href="/inventions" className="hover:text-yellow-300">💡 Inventions</Link>
+          <Link href="/about" className="hover:text-yellow-300">About</Link>
+          <Link href="/contact" className="hover:text-yellow-300">Contact</Link>
 
           {/* Search Box */}
           <div className="relative">

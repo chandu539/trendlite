@@ -84,7 +84,7 @@ const ArticlePage = ({ article, relatedPosts, initialComments }) => {
                   sizes="(max-width: 768px) 100vw, 70vw"
                   style={{ objectFit: 'cover' }}
                   className="rounded"
-                  priority
+                  //priority
                 />
               ) : (
                 <div className="bg-gray-200 w-full h-full flex items-center justify-center rounded">
@@ -123,7 +123,7 @@ const ArticlePage = ({ article, relatedPosts, initialComments }) => {
                   <input
                     id="username"
                     type="text"
-                    autoComplete='username'
+                    autoComplete='name'
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
