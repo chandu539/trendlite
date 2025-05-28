@@ -21,7 +21,11 @@ const Header = () => {
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6 items-center">
+        <nav
+          className="hidden md:flex gap-6 items-center"
+          role="navigation"
+          aria-label="Primary Navigation"
+        >
           <Link href="/" className="hover:text-yellow-300">🏠 Home</Link>
           <Link href="/tech" className="hover:text-yellow-300">📱 Tech</Link>
           <Link href="/health" className="hover:text-yellow-300">❤️ Health</Link>
@@ -35,6 +39,7 @@ const Header = () => {
               name="search"
               type="text"
               placeholder="Search..."
+              aria-label="Search site content"
               className="pl-10 pr-3 py-1 rounded-md bg-gray-700 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
             />
 
@@ -46,6 +51,10 @@ const Header = () => {
         <button
           className="md:hidden focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          type="button"
         >
           <svg
             className="w-6 h-6 text-white"
@@ -65,24 +74,30 @@ const Header = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-gray-800 px-8 pb-4 space-y-2 al   items-center">
+        <nav
+          id="mobile-menu"
+          className="md:hidden bg-gray-800 px-8 pb-4 space-y-2"
+          role="navigation"
+          aria-label="Mobile Navigation"
+        >
           <Link href="/" className="block text-white">🏠 Home</Link>
           <Link href="/tech" className="block text-white">📱 Tech</Link>
-          <Link href="/movies" className="block text-white">🎬 Movies</Link>
           <Link href="/health" className="block text-white">❤️ Health</Link>
-          <Link href="/inventions" className="block text-white">💡 Inventions</Link>
+          <Link href="/about" className="block text-white">About</Link>
+          <Link href="/contact" className="block text-white">Contact</Link>
           <div className="relative">
             <input
               id="mobile-search-input"
               name="search"
               type="text"
               placeholder="Search..."
+              aria-label="Search site content"
               className="w-full pl-10 pr-3 py-1 rounded-md bg-gray-800 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-300"
             />
 
             <MagnifyingGlassIcon className="w-5 h-5 text-gray-300 absolute left-2 top-1.5" />
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );

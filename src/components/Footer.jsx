@@ -1,42 +1,49 @@
 const Footer = () => (
-  <footer className="bg-gray-800 mt-12 p-6 text-center text-sm text-white">
-    <p className="text-base font-semibold">
-      TrendLite – The pulse of Tech & Health. Stay informed, stay healthy.
-    </p>
+  <footer className="bg-gray-800 mt-12 p-6 text-white">
+    <div className="max-w-6xl mx-auto flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
 
-    <div className="mt-3 space-x-4">
-      <a href="/" className="hover:text-yellow-300">Home</a>
-      <a href="/tech" className="hover:text-yellow-300">Tech</a>
-      <a href="/health" className="hover:text-yellow-300">Health</a>
-      <a href="/about" className="hover:text-yellow-300">About</a>
-      <a href="/contact" className="hover:text-yellow-300">Contact</a>
-      <a href="/privacy-policy" className="hover:text-yellow-300">Privacy Policy</a>
-      <a href="/disclaimer" className="hover:text-yellow-300">Disclaimer</a>
+      {/* Brand Message */}
+      <p className="text-center sm:text-left text-base font-semibold max-w-md mx-auto sm:mx-0">
+        TrendLite – The pulse of Tech & Health. Stay informed, stay healthy.
+      </p>
 
-      {/* Facebook Link */}
-      <a
-        href="https://www.facebook.com/yourpage"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Facebook"
-        className="inline-flex items-center hover:text-yellow-300"
-      >
-        <svg
-          className="h-5 w-5 mr-1 fill-current"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
+      {/* Navigation Links */}
+      <nav aria-label="Footer navigation">
+        <ul className="flex flex-wrap justify-center sm:justify-start gap-4 text-sm font-medium">
+          {["About", "Contact", "Privacy Policy", "Disclaimer"].map((item) => (
+            <li key={item}>
+              <a
+                href={`/${item.toLowerCase().replace(" ", "-")}`}
+                className="inline-block px-3 py-2 min-w-[44px] min-h-[44px] hover:text-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded"
+              >
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    {/* Social Media & Contact */}
+    <div className="max-w-6xl mx-auto mt-8 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6">
+
+      {/* Social Media */}
+      
+
+      {/* Contact Email */}
+      <p className="text-center sm:text-left break-words">
+        📩 Email:{" "}
+        <a
+          href="mailto:contact@trendlite.com"
+          className="inline-block px-3 py-2 min-w-[44px] min-h-[44px] hover:text-yellow-300 focus:outline-none focus:ring-2 focus:ring-yellow-300 rounded"
         >
-          <path d="M22.675 0h-21.35C.597 0 0 .598 0 1.333v21.333C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.414c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.466.098 2.797.142v3.24l-1.918.001c-1.505 0-1.797.716-1.797 1.766v2.316h3.59l-.467 3.622h-3.123V24h6.116c.73 0 1.324-.598 1.324-1.334V1.333C24 .598 23.404 0 22.675 0z" />
-        </svg>
-        Facebook
-      </a>
+          contact@trendlite.com
+        </a>
+      </p>
     </div>
 
-    <div className="mt-4">
-      <p>📩 Email: contact@trendlite.com</p>
-    </div>
-
-    <p className="mt-4 text-gray-400">
+    {/* Copyright */}
+    <p className="mt-8 text-center text-gray-400 text-xs">
       © 2025 TrendLite. All rights reserved.
     </p>
   </footer>

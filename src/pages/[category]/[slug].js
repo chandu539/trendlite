@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { format } from 'date-fns';
 import { useRouter } from 'next/router';
-import { PortableText } from '@portabletext/react';
+//import { PortableText } from '@portabletext/react';
+import PortableTextRenderer from '../../components/PortableTextRenderer';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -94,7 +95,7 @@ const ArticlePage = ({ article, relatedPosts, initialComments }) => {
             </div>
 
             <div className="text-lg leading-relaxed space-y-4 text-justify max-w-3xl mx-auto px-4 hyphens-auto">
-              <PortableText value={article.body} />
+              <PortableTextRenderer value={article.body} />
             </div>
 
             {/* Comments Section */}
@@ -187,7 +188,7 @@ const ArticlePage = ({ article, relatedPosts, initialComments }) => {
               <p className="text-sm text-gray-700 font-medium">🌟 Sponsored Ad</p>
               <div className="my-2 relative w-full aspect-video rounded overflow-hidden">
                 <Image
-                  src="/images/ai-life.jpg"
+                  src="/logo.webp"
                   alt="Ad"
                   fill
                   sizes="(max-width: 768px) 100vw, 30vw"

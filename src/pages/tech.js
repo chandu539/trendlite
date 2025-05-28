@@ -41,20 +41,19 @@ export default function TechPage({ techArticles }) {
         <title>Tech - TrendLite</title>
         <meta
           name="description"
-          content="Explore English-language Telugu tech articles on gadgets, AI, mobile apps, and innovation. Stay ahead with TrendLite."
+          content="Explore English-language tech articles on gadgets, AI, mobile apps, and innovation. Stay ahead with TrendLite Tech."
         />
-
         <meta
           name="keywords"
-          content="Telugu Tech Blog, English Tech News, AI Updates, Gadgets 2025, Mobile Reviews, TrendLite Tech, Tech Articles in English"
+          content="Tech Blog, English Tech News, AI Updates, Gadgets 2025, Mobile Reviews, TrendLite Tech, Tech Articles in English"
         />
         <meta name="author" content="TrendLite Team" />
 
         {/* Open Graph Tags */}
-        <meta property="og:title" content="English-language Telugu Tech Articles | TrendLite" />
+        <meta property="og:title" content="English Tech Articles | TrendLite" />
         <meta
           property="og:description"
-          content="Stay updated with trending Telugu tech articles written in English, covering AI, innovations, gadgets, and more."
+          content="Stay updated with trending tech articles written in English, covering AI, gadgets, innovations, and more."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://trendlite.vercel.app/tech" />
@@ -62,16 +61,18 @@ export default function TechPage({ techArticles }) {
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="English-language Telugu Tech News | TrendLite" />
+        <meta name="twitter:title" content="English Tech News | TrendLite" />
         <meta
           name="twitter:description"
-          content="Discover new tech trends, gadgets, and AI stories about Telugu tech, all in English only on TrendLite."
+          content="Discover the latest tech trends, gadgets, and AI updates, all written in English on TrendLite."
         />
         <meta name="twitter:image" content="https://trendlite.vercel.app/trendlite-tech-og.png" />
 
         {/* Canonical Link */}
         <link rel="canonical" href="https://trendlite.vercel.app/tech" />
       </Head>
+
+
 
       <Header />
       <main className="container mx-auto px-4 mt-6">
