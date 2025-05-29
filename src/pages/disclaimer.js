@@ -16,7 +16,7 @@ export default function DisclaimerPage() {
           content="Disclaimer, TrendLite, Content Responsibility, Website Information, Liability Limitation"
         />
         <meta name="author" content="TrendLite Team" />
-        <link rel="canonical" href="https://www.trendlite.com/disclaimer" />
+        <link rel="canonical" href="https://trendlite.vercel.app/disclaimer" />
 
         {/* Open Graph Meta Tags */}
         <meta
@@ -27,11 +27,11 @@ export default function DisclaimerPage() {
           property="og:description"
           content="Understand the scope of liability and responsibilities for content shared on TrendLite."
         />
-        <meta property="og:url" content="https://www.trendlite.com/disclaimer" />
+        <meta property="og:url" content="https://trendlite.vercel.app/disclaimer" />
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://www.trendlite.com/Trendlite-disclaimer-og.jpg"
+          content="https://trendlite.vercel.app/Trendlite-disclaimer-og.jpg"
         />
 
         {/* Twitter Card Meta Tags */}
@@ -43,7 +43,7 @@ export default function DisclaimerPage() {
         />
         <meta
           name="twitter:image"
-          content="https://www.trendlite.com/Trendlite-disclaimer-og.jpg"
+          content="https://trendlite.vercel.app/Trendlite-disclaimer-og.jpg"
         />
 
         {/* Schema.org JSON-LD Markup */}

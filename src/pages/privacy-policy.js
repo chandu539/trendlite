@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
           content="Privacy Policy, TrendLite, Data Protection, Cookies, User Rights, English Blogs"
         />
         <meta name="author" content="TrendLite Team" />
-        <link rel="canonical" href="https://www.trendlite.com/privacy-policy" />
+        <link rel="canonical" href="https://trendlite.vercel.app/privacy-policy" />
 
         {/* Open Graph Meta Tags */}
         <meta
@@ -28,11 +28,11 @@ export default function PrivacyPolicyPage() {
           property="og:description"
           content="Learn how TrendLite collects, uses, and safeguards your personal data. Your privacy is our priority."
         />
-        <meta property="og:url" content="https://www.trendlite.com/privacy-policy" />
+        <meta property="og:url" content="https://trendlite.vercel.app/privacy-policy" />
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://www.trendlite.com/Trendlite-privacy-og.jpg"
+          content="https://trendlite.vercel.app/Trendlite-privacy-og.jpg"
         />
 
         {/* Twitter Card Meta Tags */}

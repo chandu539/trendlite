@@ -17,7 +17,7 @@ export default function AboutPage() {
           content="About TrendLite, Tech Blog, Lifestyle Blog, Our Mission, Our Team"
         />
         <meta name="author" content="TrendLite Team" />
-        <link rel="canonical" href="https://www.trendlite.com/about" />
+        <link rel="canonical" href="https://trendlite.vercel.app/about" />
 
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content="About Us | TrendLite - The Pulse of Tech & Life" />
@@ -25,9 +25,9 @@ export default function AboutPage() {
           property="og:description"
           content="Discover the story behind TrendLite and how we bring you the latest in tech and lifestyle."
         />
-        <meta property="og:url" content="https://www.trendlite.com/about" />
+        <meta property="og:url" content="https://trendlite.vercel.app/about" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.trendlite.com/Trendlite-about-og.jpg" />
+        <meta property="og:image" content="https://trendlite.vercel.app/Trendlite-about-og.jpg" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -36,7 +36,7 @@ export default function AboutPage() {
           name="twitter:description"
           content="Learn about TrendLite’s mission, vision, and values."
         />
-        <meta name="twitter:image" content="https://www.trendlite.com/Trendlite-about-og.jpg" />
+        <meta name="twitter:image" content="https://trendlite.vercel.app/Trendlite-about-og.jpg" />
       </Head>
 
       <div className="min-h-screen flex flex-col justify-between">
