@@ -31,7 +31,7 @@ export default function DisclaimerPage() {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://www.trendlite.com/og-image.jpg"
+          content="https://www.trendlite.com/Trendlite-disclaimer-og.jpg"
         />
 
         {/* Twitter Card Meta Tags */}
@@ -43,7 +43,7 @@ export default function DisclaimerPage() {
         />
         <meta
           name="twitter:image"
-          content="https://www.trendlite.com/og-image.jpg"
+          content="https://www.trendlite.com/Trendlite-disclaimer-og.jpg"
         />
 
         {/* Schema.org JSON-LD Markup */}

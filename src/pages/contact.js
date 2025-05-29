@@ -55,7 +55,7 @@ export default function ContactPage() {
         <meta property="og:description" content="Reach out to TrendLite for feedback, partnerships, or any questions. We'd love to hear from you!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://trendlite.vercel.app/contact" />
-        <meta property="og:image" content="https://trendlite.vercel.app/trendlite-og.png" />
+        <meta property="og:image" content="https://trendlite.vercel.app/Trendlite-contact-og.jpg" />
 
         {/* Canonical URL */}
         <link rel="canonical" href="https://trendlite.vercel.app/contact" />

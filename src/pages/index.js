@@ -59,7 +59,7 @@ export default function Home({ articles }) {
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://trendlite.vercel.app/" />
-          <meta property="og:image" content="https://trendlite.vercel.app/trendlite-og.png" />
+          <meta property="og:image" content="https://trendlite.vercel.app/Trendlite-home-og.jpg" />
 
           {/* Twitter Card */}
           <meta name="twitter:card" content="summary_large_image" />
@@ -68,7 +68,7 @@ export default function Home({ articles }) {
             name="twitter:description"
             content="Trending articles in English on Technology and Health. Follow TrendLite for daily updates."
           />
-          <meta name="twitter:image" content="https://trendlite.vercel.app/trendlite-og.png" />
+          <meta name="twitter:image" content="https://trendlite.vercel.app/Trendlite-home-og.jpg" />
 
           {/* Canonical Link */}
           <link rel="canonical" href="https://trendlite.vercel.app/" />

@@ -27,7 +27,7 @@ export default function AboutPage() {
         />
         <meta property="og:url" content="https://www.trendlite.com/about" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.trendlite.com/og-image.jpg" />
+        <meta property="og:image" content="https://www.trendlite.com/Trendlite-about-og.jpg" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -36,7 +36,7 @@ export default function AboutPage() {
           name="twitter:description"
           content="Learn about TrendLite’s mission, vision, and values."
         />
-        <meta name="twitter:image" content="https://www.trendlite.com/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.trendlite.com/Trendlite-about-og.jpg" />
       </Head>
 
       <div className="min-h-screen flex flex-col justify-between">

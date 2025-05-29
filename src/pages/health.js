@@ -28,7 +28,7 @@ export default function HealthPage({ healthArticles }) {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://trendlite.vercel.app/health" />
-        <meta property="og:image" content="https://trendlite.vercel.app/trendlite-health-og.png" />
+        <meta property="og:image" content="https://trendlite.vercel.app/Trendlite-health-og.jpg" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -37,7 +37,7 @@ export default function HealthPage({ healthArticles }) {
           name="twitter:description"
           content="Stay updated with health and wellness insights in English from TrendLite."
         />
-        <meta name="twitter:image" content="https://trendlite.vercel.app/trendlite-health-og.png" />
+        <meta name="twitter:image" content="https://trendlite.vercel.app/Trendlite-health-og.jpg" />
 
         {/* Canonical URL */}
         <link rel="canonical" href="https://trendlite.vercel.app/health" />

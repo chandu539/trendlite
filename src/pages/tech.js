@@ -57,7 +57,7 @@ export default function TechPage({ techArticles }) {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://trendlite.vercel.app/tech" />
-        <meta property="og:image" content="https://trendlite.vercel.app/trendlite-tech-og.png" />
+        <meta property="og:image" content="https://trendlite.vercel.app/Trendlite-tech-og.jpg" />
 
         {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -66,7 +66,7 @@ export default function TechPage({ techArticles }) {
           name="twitter:description"
           content="Discover the latest tech trends, gadgets, and AI updates, all written in English on TrendLite."
         />
-        <meta name="twitter:image" content="https://trendlite.vercel.app/trendlite-tech-og.png" />
+        <meta name="twitter:image" content="https://trendlite.vercel.app/Trendlite-tech-og.jpg" />
 
         {/* Canonical Link */}
         <link rel="canonical" href="https://trendlite.vercel.app/tech" />
