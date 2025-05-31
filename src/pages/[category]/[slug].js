@@ -47,13 +47,13 @@ const ArticlePage = ({ article, relatedPosts, initialComments }) => {
         <meta name="author" content={article.author} />
         <meta property="og:title" content={article.title} />
         <meta property="og:description" content={article.description || 'Check out this article.'} />
-        <meta property="og:image" content={article.image} />
+        <meta property="og:image" content={`https://trendlite.vercel.app${article.image}`} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://trendlite.vercel.app/${article.slug.current}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={article.title} />
         <meta name="twitter:description" content={article.description || 'Explore this post on our blog.'} />
-        <meta name="twitter:image" content={article.image} />
+        <meta name="twitter:image" content={`https://trendlite.vercel.app${article.image}`} />
         <link rel="canonical" href={`https://trendlite.vercel.app/${article.slug.current}`} />
       </Head>
 

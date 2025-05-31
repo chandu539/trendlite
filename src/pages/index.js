@@ -91,7 +91,7 @@ export default function Home({ articles }) {
                       title={article.title}
                       slug={article.slug?.current}
                       image={article.mainImage?.asset?.url}
-                      category={article.categories[0]?.title.toLowerCase()}
+                      category={article.categories?.[0]?.title?.toLowerCase() || "uncategorized"}
                       publishedAt={article.publishedAt}
                       introduction={article.introduction}
                     />
