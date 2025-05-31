@@ -1,8 +1,30 @@
-// components/PortableTextRenderer.js
-import { PortableText } from '@portabletext/react';
+import { PortableText } from '@portabletext/react'
+import Image from 'next/image'
+import { urlFor } from '../sanity/lib/image'; // import your URL builder here
 
 const components = {
-  types: {},
+  types: {
+    image: ({ value }) => {
+      // use urlFor to build the URL from the image object `value`
+      const imageUrl = urlFor(value).width(600).height(400).url()
+
+      return (
+        <div className="my-4">
+          <Image
+            src={imageUrl}
+            alt={value.alt || 'Image'}
+            width={600}
+            height={400}
+            className="rounded"
+            priority
+          />
+          {value.caption && (
+            <p className="text-sm text-gray-500 mt-1">{value.caption}</p>
+          )}
+        </div>
+      )
+    },
+  },
   marks: {
     strong: ({ children }) => <strong>{children}</strong>,
   },
@@ -21,8 +43,8 @@ const components = {
     bullet: ({ children }) => <li className="mb-1">{children}</li>,
     number: ({ children }) => <li className="mb-1">{children}</li>,
   },
-};
+}
 
 export default function PortableTextRenderer({ value }) {
-  return <PortableText value={value} components={components} />;
+  return <PortableText value={value} components={components} />
 }

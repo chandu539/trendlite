@@ -107,7 +107,7 @@ export default function Home({ articles }) {
           <aside className="w-full md:w-[30%] space-y-6">
             <div className="bg-white rounded-xl shadow-md p-4">
               <h3 className="text-lg font-semibold mb-2">🔔 Sponsored Ad</h3>
-              <div class="w-full h-40 bg-gray-200 rounded-md flex items-center justify-center text-gray-900">
+              <div className="w-full h-40 bg-gray-200 rounded-md flex items-center justify-center text-gray-900">
                 Ad Space
               </div>
 
