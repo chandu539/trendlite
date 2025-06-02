@@ -34,7 +34,7 @@ const ArticleCard = ({ title, slug, image, introduction, category, publishedAt }
 
           {/* Introduction + Link */}
           <div className="md:w-1/2 flex flex-col justify-between">
-            <p className="text-gray-700 text-base leading-relaxed mb-6 line-clamp-3">
+            <p className="text-gray-700 text-base leading-relaxed mb-6 line-clamp-5">
               {introduction}
             </p>
 
