@@ -20,17 +20,19 @@ const ArticleCard = ({ title, slug, image, introduction, category, publishedAt }
         )}
 
         <div className="flex flex-col md:flex-row gap-6">
-          {/* Image */}
-          <div className="relative w-full md:w-1/2 h-64 md:h-56 rounded-xl overflow-hidden">
-            <Image
-              src={image}
-              alt={title}
-              fill
-              priority
-              className="object-cover rounded-xl"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
+            {/* Image */}
+            <div className="relative w-full md:w-1/2 h-64 md:h-56 rounded-xl overflow-hidden">
+              <Image
+                src={image}
+                alt={title}
+                priority // keeps preload for LCP
+                width={800} // ✅ set width based on actual image size or container
+                height={448} // ✅ maintain aspect ratio (e.g., 16:9)
+                className="object-cover rounded-xl"
+                sizes="(max-width: 768px) 100vw, 50vw" // ✅ responsive
+              />
+            </div>
+
 
           {/* Introduction + Link */}
           <div className="md:w-1/2 flex flex-col justify-between">

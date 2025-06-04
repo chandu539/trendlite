@@ -1,11 +1,10 @@
-// pages/tech/index.js
-
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ArticleCard from '../components/ArticleCard';
 import { createClient } from 'next-sanity';
 import Head from 'next/head';
-
+import Link from 'next/link';
+import Image from 'next/image';
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -15,7 +14,8 @@ const client = createClient({
 });
 
 export async function getStaticProps() {
-  const query = `*[_type == "post" && references(*[_type=="category" && title=="tech"]._id)] | order(publishedAt desc){
+  const techQuery = `*[_type == "post" && "tech" in categories[]->title] | order(publishedAt desc){
+    _id,
     title,
     slug,
     "image": mainImage.asset->url,
@@ -24,17 +24,30 @@ export async function getStaticProps() {
     publishedAt
   }`;
 
-  const techArticles = await client.fetch(query);
+  const recentPostsQuery = `*[_type == "post"] | order(publishedAt desc)[0...5]{
+    _id,
+    title,
+    slug,
+    "image": mainImage.asset->url,
+    categories[]->{ title }
+  }`;
+
+
+  const [techArticles, recentPosts] = await Promise.all([
+    client.fetch(techQuery),
+    client.fetch(recentPostsQuery),
+  ]);
 
   return {
     props: {
       techArticles,
+      recentPosts,
     },
-    revalidate: 60, // optional: regenerate every 60 seconds
+    revalidate: 60,
   };
 }
 
-export default function TechPage({ techArticles }) {
+export default function TechPage({ techArticles, recentPosts }) {
   return (
     <>
       <Head>
@@ -48,8 +61,6 @@ export default function TechPage({ techArticles }) {
           content="Tech Blog, English Tech News, AI Updates, Gadgets 2025, Mobile Reviews, TrendLite Tech, Tech Articles in English"
         />
         <meta name="author" content="TrendLite Team" />
-
-        {/* Open Graph Tags */}
         <meta property="og:title" content="English Tech Articles | TrendLite" />
         <meta
           property="og:description"
@@ -57,34 +68,35 @@ export default function TechPage({ techArticles }) {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://trendlite.vercel.app/tech" />
-        <meta property="og:image" content="https://trendlite.vercel.app/Trendlite-tech-og.jpg" />
-
-        {/* Twitter Card Tags */}
+        <meta
+          property="og:image"
+          content="https://trendlite.vercel.app/Trendlite-tech-og.jpg"
+        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="English Tech News | TrendLite" />
         <meta
           name="twitter:description"
           content="Discover the latest tech trends, gadgets, and AI updates, all written in English on TrendLite."
         />
-        <meta name="twitter:image" content="https://trendlite.vercel.app/Trendlite-tech-og.jpg" />
-
-        {/* Canonical Link */}
+        <meta
+          name="twitter:image"
+          content="https://trendlite.vercel.app/Trendlite-tech-og.jpg"
+        />
         <link rel="canonical" href="https://trendlite.vercel.app/tech" />
       </Head>
 
-
-
       <Header />
+
       <main className="container mx-auto px-4 mt-6">
         <h1 className="text-3xl font-bold mb-6">📱 All Tech Articles</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Main Content */}
-          <div className="lg:col-span-8 space-y-6">
+          {/* Articles Section - 60% */}
+          <section className="lg:col-span-8 space-y-6">
             {techArticles.length > 0 ? (
-              techArticles.map(article => (
+              techArticles.map((article) => (
                 <ArticleCard
-                  key={article.slug?.current}
+                  key={article._id}
                   title={article.title}
                   slug={article.slug?.current}
                   image={article.image}
@@ -96,25 +108,41 @@ export default function TechPage({ techArticles }) {
             ) : (
               <p>No tech articles found.</p>
             )}
-          </div>
+          </section>
 
-          {/* Sidebar */}
+          {/* Sidebar Section - 40% */}
           <aside className="lg:col-span-4 space-y-4">
-            <div className="bg-gray-100 p-4 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-2">📢 Sponsored Ad</h2>
-              <p>Check out our latest tech gadgets and offers!</p>
-            </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-2">🔍 Related Articles</h2>
-              <ul className="list-disc ml-4 text-sm text-gray-700">
-                <li>AI Inventions 2024</li>
-                <li>Future of Robotics</li>
-                <li>Quantum Computing Basics</li>
-              </ul>
+            <div className="bg-gray-100 p-6 rounded-lg shadow-sm">
+              <h2 className="text-2xl font-semibold mb-4">📰 Recent Posts</h2>
+              <div className="space-y-4">
+                {recentPosts.length > 0 ? (
+                  recentPosts.map((post) => (
+                    <Link
+                      key={post._id}
+                      href={`/${post.categories?.[0]?.title.toLowerCase() || 'general'}/${post.slug.current}`}
+                      className="flex items-center space-x-3 hover:bg-gray-200 p-2 rounded transition"
+                    >
+                      <div className="flex-shrink-0">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          width={80}
+                          height={80}
+                          className="rounded-md object-cover"
+                        />
+                      </div>
+                      <p className="text-sm text-gray-800 font-medium">{post.title}</p>
+                    </Link>
+                  ))
+                ) : (
+                  <p>No recent posts found.</p>
+                )}
+              </div>
             </div>
           </aside>
         </div>
       </main>
+
       <Footer />
     </>
   );

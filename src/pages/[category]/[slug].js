@@ -11,7 +11,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { client } from '../../sanity/lib/client';
 
-const ArticlePage = ({ article, relatedPosts, initialComments }) => {
+const ArticlePage = ({ article, recentPosts, initialComments }) => {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -169,83 +169,42 @@ const ArticlePage = ({ article, relatedPosts, initialComments }) => {
           </div>
 
           {/* Sidebar */}
-          <aside className="w-full lg:w-[30%] space-y-6 top-24 self-start">
-            <div className="bg-gray-100 p-4 rounded shadow-sm">
-              <h2 className="text-xl font-semibold mb-3">సంబంధిత కథనాలు</h2>
-              <ul className="space-y-2">
-                {relatedPosts.length === 0 && <li>No related posts found.</li>}
-                {relatedPosts.slice(0, visibleCount).map((rel) => (
-                  <li key={rel._id}>
-                    <Link href={`/${rel.slug.current}`} className="text-blue-600 hover:underline">
-                      {rel.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-yellow-100 p-4 rounded shadow-sm text-center">
-              <p className="text-sm text-gray-700 font-medium">🌟 Sponsored Ad</p>
-              <div className="my-2 relative w-full aspect-video rounded overflow-hidden">
-                <Image
-                  src="/logo.webp"
-                  alt="Ad"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 30vw"
-                  style={{ objectFit: 'cover' }}
-                  className="rounded"
-                />
-              </div>
-              <p className="text-gray-600 text-sm">
-                మీ ఇంటిని మిగతావారికంటే ముందుగా మార్చుకోండి! ఇప్పుడు ఆర్డర్ చేయండి!
-              </p>
-            </div>
-          </aside>
-        </div>
-
-        {/* Related Posts Section */}
-        <section className="mt-12">
-          <h2 className="text-2xl font-bold mb-6">📚 Related Posts You May Like</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedPosts.slice(0, visibleCount).map((post) => (
-              <div key={post._id} className="bg-white p-4 rounded shadow-md">
-                <div className="relative w-full aspect-video mb-3 rounded overflow-hidden">
+                  {/* Sidebar with Recent Posts */}
+        <div className="w-full lg:w-[30%] bg-white shadow-md p-6 rounded-lg">
+          <h2 className="text-2xl font-bold mb-4">📰 Recent Posts</h2>
+          <ul className="space-y-4">
+            {recentPosts.map((post) => (
+              <li key={post._id} className="flex gap-4 items-start">
+                <div className="w-16 h-16 relative flex-shrink-0">
                   {post.image ? (
                     <Image
                       src={post.image}
                       alt={post.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, 25vw"
-                      style={{ objectFit: 'cover' }}
-                      className="rounded"
+                      sizes="64px"
+                      className="rounded object-cover"
                     />
                   ) : (
-                    <div className="bg-gray-200 w-full h-full flex items-center justify-center rounded">
+                    <div className="w-16 h-16 bg-gray-200 flex items-center justify-center text-sm text-gray-600 rounded">
                       No Image
                     </div>
                   )}
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{post.title}</h3>
-                <p className="text-sm text-gray-600 line-clamp-3">{post.description}</p>
                 <Link
-                  href={`/${post.slug.current}`}
-                  className="text-blue-500 hover:underline text-sm mt-2 inline-block"
-                >
-                  Read more →
+                      key={post._id}
+                      href={`/${post.categories?.[0]?.title.toLowerCase() || 'general'}/${post.slug.current}`}
+                      className="flex items-center space-x-3 hover:bg-gray-200 p-2 rounded transition"
+                    >
+                  <p className="text-blue-700 hover:underline font-medium text-sm leading-snug">{post.title}</p>
                 </Link>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
+        </div>
 
-          {relatedPosts.length > visibleCount && (
-            <button
-              onClick={() => setVisibleCount(visibleCount + 4)}
-              className="mt-6 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-            >
-              Load More
-            </button>
-          )}
-        </section>
+        </div>
+
+        
       </main>
       <Footer />
     </>
@@ -286,13 +245,13 @@ export async function getStaticProps({ params }) {
     return { notFound: true };
   }
 
-  const category = article.categories?.[0]?.title;
-
-  const queryRelatedArticles = `*[_type == "post" && $category in categories[].title && slug.current != $slug] | order(_createdAt desc) {
-    _id, title, slug, description, "image": mainImage.asset->url
+  const queryRecentPosts = `*[_type == "post"] | order(publishedAt desc)[0...5] {
+    _id, title, slug, "image": mainImage.asset->url, categories[]->{ title }
   }`;
+  const recentPosts = await client.fetch(queryRecentPosts);
 
-  const relatedPosts = await client.fetch(queryRelatedArticles, { category, slug });
+
+  
 
   // Use baseURL here:
   const commentsRes = await fetch(`${baseURL}/api/comments/${slug}`);
@@ -301,8 +260,8 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       article,
-      relatedPosts,
       initialComments,
+      recentPosts, 
     },
     revalidate: 60, // ISR support: rebuild every 60 seconds
   };

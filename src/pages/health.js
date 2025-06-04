@@ -1,48 +1,31 @@
 import React from "react";
 import Head from 'next/head';
+import Link from 'next/link';
+import Image from 'next/image';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ArticleCard from '../components/ArticleCard';
-import { client } from '../sanity/lib/client'; // Sanity client setup
+import { client } from '../sanity/lib/client';
 
-export default function HealthPage({ healthArticles }) {
+export default function HealthPage({ healthArticles, recentPosts }) {
   return (
     <>
       <Head>
         <title>Health - TrendLite</title>
-        <meta
-          name="description"
-          content="Explore expert-written health articles, wellness tips, and lifestyle advice in English on TrendLite. Stay healthy and informed!"
-        />
-        <meta
-          name="keywords"
-          content="Health, Wellness, Lifestyle, English Health Articles, Mental Health, Fitness Tips, TrendLite Health"
-        />
+        <meta name="description" content="Explore expert-written health articles, wellness tips, and lifestyle advice in English on TrendLite. Stay healthy and informed!" />
+        <meta name="keywords" content="Health, Wellness, Lifestyle, English Health Articles, Mental Health, Fitness Tips, TrendLite Health" />
         <meta name="author" content="TrendLite Team" />
-
-        {/* Open Graph / Facebook */}
         <meta property="og:title" content="Health - TrendLite" />
-        <meta
-          property="og:description"
-          content="Get practical health and wellness tips with curated articles in English from TrendLite."
-        />
+        <meta property="og:description" content="Get practical health and wellness tips with curated articles in English from TrendLite." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://trendlite.vercel.app/health" />
         <meta property="og:image" content="https://trendlite.vercel.app/Trendlite-health-og.jpg" />
-
-        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Health - TrendLite" />
-        <meta
-          name="twitter:description"
-          content="Stay updated with health and wellness insights in English from TrendLite."
-        />
+        <meta name="twitter:description" content="Stay updated with health and wellness insights in English from TrendLite." />
         <meta name="twitter:image" content="https://trendlite.vercel.app/Trendlite-health-og.jpg" />
-
-        {/* Canonical URL */}
         <link rel="canonical" href="https://trendlite.vercel.app/health" />
       </Head>
-
 
       <Header />
       <main className="container mx-auto px-4 mt-6">
@@ -60,7 +43,7 @@ export default function HealthPage({ healthArticles }) {
                   image={article.image}
                   introduction={article.introduction}
                   publishedAt={article.publishedAt}
-                  category={article.categories[0]?.title.toLowerCase()} 
+                  category={article.categories[0]?.title.toLowerCase()}
                 />
               ))
             ) : (
@@ -69,18 +52,33 @@ export default function HealthPage({ healthArticles }) {
           </div>
 
           {/* Sidebar */}
-          <aside className="lg:col-span-4 space-y-4">
-            <div className="bg-gray-100 p-4 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-2">📢 Sponsored Ad</h2>
-              <p>Stay fit with our new range of wellness products!</p>
-            </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-sm">
-              <h2 className="text-xl font-semibold mb-2">🔍 Related Articles</h2>
-              <ul className="list-disc ml-4 text-sm text-gray-700">
-                <li>10 Healthy Morning Habits</li>
-                <li>Mental Health Awareness</li>
-                <li>Superfoods You Should Try</li>
-              </ul>
+          <aside className="lg:col-span-4 space-y-4 ">
+            <div className="bg-gray-100 p-6 rounded-lg shadow-sm">
+              <h2 className="text-xl font-semibold mb-4">📰 Recent Posts</h2>
+              <div className="space-y-3">
+                {recentPosts.length > 0 ? (
+                  recentPosts.map(post => (
+                    <Link
+                      key={post._id}
+                      href={`/${post.categories?.[0]?.title.toLowerCase() || 'general'}/${post.slug.current}`}
+                      className="flex items-center space-x-3 hover:bg-gray-200 p-2 rounded transition"
+                    >
+                      <div className="flex-shrink-0">
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          width={80}
+                          height={80}
+                          className="rounded-md object-cover"
+                        />
+                      </div>
+                      <p className="text-sm text-gray-800 font-medium">{post.title}</p>
+                    </Link>
+                  ))
+                ) : (
+                  <p>No recent posts found.</p>
+                )}
+              </div>
             </div>
           </aside>
         </div>
@@ -92,32 +90,45 @@ export default function HealthPage({ healthArticles }) {
 
 // ✅ Fetch data at build time
 export async function getStaticProps() {
-  const query = `*[_type == "post" && "health" in categories[]->title] | order(publishedAt desc){
+  const healthQuery = `*[_type == "post" && "health" in categories[]->title] | order(publishedAt desc){
     _id,
     title,
     slug,
     "image": mainImage.asset->url,
     introduction,
     categories[]->{
-        title
-      },
+      title
+    },
     publishedAt
   }`;
 
+  const recentPostsQuery = `*[_type == "post"] | order(publishedAt desc)[0...5]{
+    _id,
+    title,
+    slug,
+    "image": mainImage.asset->url,
+    categories[]->{ title }
+  }`;
+
   try {
-    const healthArticles = await client.fetch(query);
+    const [healthArticles, recentPosts] = await Promise.all([
+      client.fetch(healthQuery),
+      client.fetch(recentPostsQuery),
+    ]);
 
     return {
       props: {
         healthArticles,
+        recentPosts,
       },
-      revalidate: 60, // Optional: Regenerates every 60 seconds if a request comes in
+      revalidate: 60,
     };
   } catch (error) {
     console.error("Sanity fetch error:", error);
     return {
       props: {
         healthArticles: [],
+        recentPosts: [],
       },
     };
   }
