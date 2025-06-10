@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.trendlite.online
+
+# Sitemaps
+Sitemap: https://www.trendlite.online/sitemap.xml
