@@ -17,7 +17,7 @@ export default function AboutPage() {
           content="About TrendLite, Tech Blog, Lifestyle Blog, Our Mission, Our Team"
         />
         <meta name="author" content="TrendLite Team" />
-        <link rel="canonical" href="https://trendlite.vercel.app/about" />
+        <link rel="canonical" href="https://www.trendlite.online/about" />
 
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content="About Us | TrendLite - The Pulse of Tech & Life" />
@@ -25,9 +25,9 @@ export default function AboutPage() {
           property="og:description"
           content="Discover the story behind TrendLite and how we bring you the latest in tech and lifestyle."
         />
-        <meta property="og:url" content="https://trendlite.vercel.app/about" />
+        <meta property="og:url" content="https://www.trendlite.online/about" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://trendlite.vercel.app/Trendlite-about-og.jpg" />
+        <meta property="og:image" content="https://www.trendlite.online/Trendlite-about-og.webp" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -36,7 +36,7 @@ export default function AboutPage() {
           name="twitter:description"
           content="Learn about TrendLite’s mission, vision, and values."
         />
-        <meta name="twitter:image" content="https://trendlite.vercel.app/Trendlite-about-og.jpg" />
+        <meta name="twitter:image" content="https://www.trendlite.online/Trendlite-about-og.webp" />
       </Head>
 
       <div className="min-h-screen flex flex-col justify-between">
@@ -73,7 +73,7 @@ export default function AboutPage() {
             We’d love to hear from you! Whether you have questions, feedback, or collaboration ideas, feel free to reach out.
           </p>
           <ul className="list-disc ml-6 mb-12">
-            <li>Email: <a href="mailto:contact@trendlite.com" className="text-blue-600 underline">contact@trendlite.com</a></li>
+            <li>Email: <a href="mailto:contact@chchandu554@gmail.com" className="text-blue-600 underline">contact@trendlite.online</a></li>
             <li>Address: TrendLite, AndhraPradesh, India</li>
           </ul>
 

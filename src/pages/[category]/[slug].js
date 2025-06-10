@@ -49,12 +49,12 @@ const ArticlePage = ({ article, recentPosts, initialComments }) => {
         <meta property="og:description" content={article.description || 'Check out this article.'} />
         <meta property="og:image" content={article.image}/>
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://trendlite.vercel.app/${article.slug.current}`} />
+        <meta property="og:url" content={`https://www.trendlite.online/${article.slug.current}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={article.title} />
         <meta name="twitter:description" content={article.description || 'Explore this post on our blog.'} />
         <meta name="twitter:image" content={article.image}/>
-        <link rel="canonical" href={`https://trendlite.vercel.app/${article.slug.current}`} />
+        <link rel="canonical" href={`https://www.trendlite.online/${article.slug.current}`} />
       </Head>
 
       <Header />
@@ -85,7 +85,7 @@ const ArticlePage = ({ article, recentPosts, initialComments }) => {
                   sizes="(max-width: 768px) 100vw, 70vw"
                   style={{ objectFit: 'cover' }}
                   className="rounded"
-                  //priority
+                  priority
                 />
               ) : (
                 <div className="bg-gray-200 w-full h-full flex items-center justify-center rounded">

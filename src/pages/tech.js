@@ -67,10 +67,10 @@ export default function TechPage({ techArticles, recentPosts }) {
           content="Stay updated with trending tech articles written in English, covering AI, gadgets, innovations, and more."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://trendlite.vercel.app/tech" />
+        <meta property="og:url" content="https://www.trendlite.online/tech" />
         <meta
           property="og:image"
-          content="https://trendlite.vercel.app/Trendlite-tech-og.jpg"
+          content="https://www.trendlite.online/Trendlite-tech-og.webp"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="English Tech News | TrendLite" />
@@ -80,9 +80,9 @@ export default function TechPage({ techArticles, recentPosts }) {
         />
         <meta
           name="twitter:image"
-          content="https://trendlite.vercel.app/Trendlite-tech-og.jpg"
+          content="https://www.trendlite.online/Trendlite-tech-og.webp"
         />
-        <link rel="canonical" href="https://trendlite.vercel.app/tech" />
+        <link rel="canonical" href="https://www.trendlite.online/tech" />
       </Head>
 
       <Header />
@@ -129,6 +129,7 @@ export default function TechPage({ techArticles, recentPosts }) {
                           width={80}
                           height={80}
                           className="rounded-md object-cover"
+                          priority
                         />
                       </div>
                       <p className="text-sm text-gray-800 font-medium">{post.title}</p>

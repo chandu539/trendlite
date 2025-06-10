@@ -54,13 +54,13 @@ export default function Home({ articles }) {
         <meta property="og:title" content="TrendLite | Tech & Health Blogs in English" />
         <meta property="og:description" content="Explore trending content on technology and health written in English for native and global readers." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://trendlite.vercel.app/" />
-        <meta property="og:image" content="https://trendlite.vercel.app/Trendlite-home-og.jpg" />
+        <meta property="og:url" content="https://www.trendlite.online/" />
+        <meta property="og:image" content="https://www.trendlite.online/Trendlite-home-og.webp" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="TrendLite | Tech & Health Blogs in English" />
         <meta name="twitter:description" content="Trending articles in English on Technology and Health. Follow TrendLite for daily updates." />
-        <meta name="twitter:image" content="https://trendlite.vercel.app/Trendlite-home-og.jpg" />
-        <link rel="canonical" href="https://trendlite.vercel.app/" />
+        <meta name="twitter:image" content="https://www.trendlite.online/Trendlite-home-og.webp" />
+        <link rel="canonical" href="https://www.trendlite.online/" />
       </Head>
 
       <Header />

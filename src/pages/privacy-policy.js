@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
           content="Privacy Policy, TrendLite, Data Protection, Cookies, User Rights, English Blogs"
         />
         <meta name="author" content="TrendLite Team" />
-        <link rel="canonical" href="https://trendlite.vercel.app/privacy-policy" />
+        <link rel="canonical" href="https://www.trendlite.online/privacy-policy" />
 
         {/* Open Graph Meta Tags */}
         <meta
@@ -28,11 +28,11 @@ export default function PrivacyPolicyPage() {
           property="og:description"
           content="Learn how TrendLite collects, uses, and safeguards your personal data. Your privacy is our priority."
         />
-        <meta property="og:url" content="https://trendlite.vercel.app/privacy-policy" />
+        <meta property="og:url" content="https://www.trendlite.online/privacy-policy" />
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://trendlite.vercel.app/Trendlite-privacy-og.jpg"
+          content="https://www.trendlite.online/Trendlite-privacy-og.webp"
         />
 
         {/* Twitter Card Meta Tags */}
@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
         />
         <meta
           name="twitter:image"
-          content="https://www.trendlite.com/Trendlite-privacy-og.jpg"
+          content="https://www.trendlite.online/Trendlite-privacy-og.webp"
         />
 
         {/* Schema.org JSON-LD Markup */}
@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
               "@type": "WebPage",
               "name": "Privacy Policy",
               "description": "Learn how TrendLite collects and protects user data.",
-              "url": "https://www.trendlite.com/privacy-policy",
+              "url": "https://www.trendlite.online/privacy-policy",
               "publisher": {
                 "@type": "Organization",
                 "name": "TrendLite"
@@ -170,12 +170,16 @@ export default function PrivacyPolicyPage() {
             <li>Request data portability.</li>
           </ul>
           <p className="mb-6">
-            To exercise these rights, please contact us at <a href="mailto:privacy@trendlite.com" className="text-blue-600 underline">privacy@trendlite.com</a>.
+            To exercise these rights, please contact us at <a href="mailto:privacy@chchandu554@gmail.com" className="text-blue-600 underline">privacy@trendlite.online</a>.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Data Security</h2>
           <p className="mb-6">
             We implement appropriate security measures to protect your personal data from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.
+          </p>
+           <h2 className="text-2xl font-semibold mt-8 mb-4">Image Credits</h2>
+          <p className="mb-6">
+            Some images used on this website are designed by Freepik and obtained from <a href="https://www.freepik.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Freepik.com</a>. We appreciate their valuable resources.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Children&apos;s Privacy</h2>
@@ -190,7 +194,7 @@ export default function PrivacyPolicyPage() {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
           <p className="mb-6">
-            If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@trendlite.com" className="text-blue-600 underline">support@trendlite.com</a>.
+            If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@trendlite.online" className="text-blue-600 underline">support@trendlite.online</a>.
           </p>
 
          <div className="text-center mt-10">

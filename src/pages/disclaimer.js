@@ -16,7 +16,7 @@ export default function DisclaimerPage() {
           content="Disclaimer, TrendLite, Content Responsibility, Website Information, Liability Limitation"
         />
         <meta name="author" content="TrendLite Team" />
-        <link rel="canonical" href="https://trendlite.vercel.app/disclaimer" />
+        <link rel="canonical" href="https://www.trendlite.online/disclaimer" />
 
         {/* Open Graph Meta Tags */}
         <meta
@@ -27,11 +27,11 @@ export default function DisclaimerPage() {
           property="og:description"
           content="Understand the scope of liability and responsibilities for content shared on TrendLite."
         />
-        <meta property="og:url" content="https://trendlite.vercel.app/disclaimer" />
+        <meta property="og:url" content="https://www.trendlite.online/disclaimer" />
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://trendlite.vercel.app/Trendlite-disclaimer-og.jpg"
+          content="https://www.trendlite.online/Trendlite-disclaimer-og.webp"
         />
 
         {/* Twitter Card Meta Tags */}
@@ -43,7 +43,7 @@ export default function DisclaimerPage() {
         />
         <meta
           name="twitter:image"
-          content="https://trendlite.vercel.app/Trendlite-disclaimer-og.jpg"
+          content="https://www.trendlite.online/Trendlite-disclaimer-og.webp"
         />
 
         {/* Schema.org JSON-LD Markup */}
@@ -55,7 +55,7 @@ export default function DisclaimerPage() {
               "@type": "WebPage",
               "name": "Disclaimer",
               "description": "Disclaimer outlining limitations of liability and content responsibility on TrendLite.",
-              "url": "https://www.trendlite.com/disclaimer",
+              "url": "https://www.trendlite.online/disclaimer",
               "publisher": {
                 "@type": "Organization",
                 "name": "TrendLite"
@@ -106,7 +106,7 @@ export default function DisclaimerPage() {
           <p className="mb-6">
             If you have any questions regarding this Disclaimer, you may contact us at:
             <br />
-            <a href="mailto:contact@trendlite.com" className="text-blue-600 underline">contact@trendlite.com</a>
+            <a href="mailto:contact@chchandu554@gmail.com" className="text-blue-600 underline">contact@trendlite.online</a>
           </p>
         </main>
 
