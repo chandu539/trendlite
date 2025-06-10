@@ -1,15 +1,26 @@
 const Footer = () => (
   <footer className="bg-gray-900 text-white text-sm py-6 mt-12">
-    <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div className="max-w-5xl mx-auto px-4 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
-      {/* Site Info */}
-      <p className="text-center sm:text-left">
-        © 2025 <strong>TrendLite</strong> — The pulse of Tech & Health.
-      </p>
+      {/* Site Info & Freepik Credit */}
+      <div className="text-center sm:text-left">
+        <p>© 2025 <strong>TrendLite</strong> — The pulse of Tech & Health.</p>
+        <p className="text-gray-400 mt-1">
+          AI-generated images by{' '}
+          <a
+            href="https://www.freepik.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-yellow-300 hover:underline"
+          >
+            Freepik
+          </a>
+        </p>
+      </div>
 
       {/* Navigation */}
       <nav aria-label="Footer navigation">
-        <ul className="flex flex-wrap justify-center gap-4">
+        <ul className="flex flex-wrap justify-center sm:justify-end gap-4">
           {[
             { name: "Home", path: "/" },
             { name: "About", path: "/about" },
@@ -27,6 +38,7 @@ const Footer = () => (
           ))}
         </ul>
       </nav>
+
     </div>
   </footer>
 );
