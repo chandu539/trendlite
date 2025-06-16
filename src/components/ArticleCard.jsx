@@ -25,11 +25,11 @@ const ArticleCard = ({ title, slug, image, introduction, category, publishedAt }
               <Image
                 src={image}
                 alt={title}
-                priority // keeps preload for LCP
-                width={800} // ✅ set width based on actual image size or container
-                height={448} // ✅ maintain aspect ratio (e.g., 16:9)
-                className="object-cover rounded-xl"
-                sizes="(max-width: 768px) 100vw, 50vw" // ✅ responsive
+                priority
+                width={800}
+                height={448}
+                sizes="(max-width: 768px) 100vw, 50vw" // Can be refined
+                className="object-cover rounded-xl w-full h-auto"
               />
             </div>
 
