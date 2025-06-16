@@ -4,7 +4,7 @@ import ArticleCard from '../components/ArticleCard';
 import { createClient } from 'next-sanity';
 import Head from 'next/head';
 import { useState } from 'react';
-import Image from 'next/image'; // ✅ Import Image
+
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,

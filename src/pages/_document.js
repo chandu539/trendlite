@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         {/* Google Site Verification Tag */}
         <meta name="google-site-verification" content="sYF7FREEVkxPWs3X8rmqC5nQ9UJsgHaWN43VuyOWYQc" />
+        <meta name="p:domain_verify" content="46e0effef85d55c9290a5db5e4ea51c5"/>
       </Head>
       <body className="antialiased">
         <Main />
