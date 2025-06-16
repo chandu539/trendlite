@@ -6,45 +6,30 @@ export default function DisclaimerPage() {
   return (
     <>
       <Head>
-        <title>Disclaimer | TrendLite - The Pulse of Tech &amp; Life</title>
+        <title>Disclaimer | TrendLite - The Pulse of Tech & Life</title>
         <meta
           name="description"
-          content="This Disclaimer outlines the limitations of liability and accuracy of information on the TrendLite website."
+          content="Read the disclaimer for TrendLite regarding informational content, third-party links, affiliate programs, and content accuracy."
         />
         <meta
           name="keywords"
-          content="Disclaimer, TrendLite, Content Responsibility, Website Information, Liability Limitation"
+          content="Disclaimer, TrendLite, content responsibility, liability, affiliate disclosure, image credit, AI images"
         />
         <meta name="author" content="TrendLite Team" />
         <link rel="canonical" href="https://www.trendlite.online/disclaimer" />
 
         {/* Open Graph Meta Tags */}
-        <meta
-          property="og:title"
-          content="Disclaimer | TrendLite - The Pulse of Tech &amp; Life"
-        />
-        <meta
-          property="og:description"
-          content="Understand the scope of liability and responsibilities for content shared on TrendLite."
-        />
+        <meta property="og:title" content="Disclaimer | TrendLite - The Pulse of Tech & Life" />
+        <meta property="og:description" content="Understand the scope of liability and responsibilities for content shared on TrendLite." />
         <meta property="og:url" content="https://www.trendlite.online/disclaimer" />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content="https://www.trendlite.online/Trendlite-disclaimer-og.webp"
-        />
+        <meta property="og:image" content="https://www.trendlite.online/logo.webp" />
 
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Disclaimer | TrendLite" />
-        <meta
-          name="twitter:description"
-          content="Read the disclaimer regarding the use of content and information on TrendLite."
-        />
-        <meta
-          name="twitter:image"
-          content="https://www.trendlite.online/Trendlite-disclaimer-og.webp"
-        />
+        <meta name="twitter:description" content="Disclaimer about content accuracy, third-party links, and AI-generated assets on TrendLite." />
+        <meta name="twitter:image" content="https://www.trendlite.online/logo.webp" />
 
         {/* Schema.org JSON-LD Markup */}
         <script
@@ -54,7 +39,7 @@ export default function DisclaimerPage() {
               "@context": "https://schema.org",
               "@type": "WebPage",
               "name": "Disclaimer",
-              "description": "Disclaimer outlining limitations of liability and content responsibility on TrendLite.",
+              "description": "Disclaimer outlining limitations of liability, image usage, AI content, and affiliate disclaimers for TrendLite.",
               "url": "https://www.trendlite.online/disclaimer",
               "publisher": {
                 "@type": "Organization",
@@ -72,41 +57,52 @@ export default function DisclaimerPage() {
 
         <main className="max-w-4xl mx-auto px-4 py-10 text-gray-800">
           <h1 className="text-4xl font-bold mb-6 text-center">Disclaimer</h1>
-          <p className="mb-4 text-lg leading-relaxed">
-            Last updated: May 15, 2025
-          </p>
+          <p className="mb-4 text-lg leading-relaxed">Last updated: May 15, 2025</p>
 
           <p className="mb-6 text-lg leading-relaxed">
-            The information provided by TrendLite (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) on our website is for general informational purposes only. All information on the Site is provided in good faith; however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, or completeness of any information on the Site.
+            The content provided by TrendLite (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is for general informational and educational purposes only. While we strive to provide up-to-date and accurate information, we make no warranties of any kind, expressed or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information contained on the site.
           </p>
-
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">External Links Disclaimer</h2>
           <p className="mb-6">
-            The Site may contain (or you may be sent through the Site) links to other websites or content belonging to or originating from third parties. Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, or completeness by us.
-            We do not warrant, endorse, guarantee, or assume responsibility for the accuracy or reliability of any information offered by third-party websites linked through the Site.
+            This website may contain links to other websites or content belonging to third parties. These external links are provided for convenience and information purposes only. We do not control or endorse the content of these third-party websites and are not responsible for their practices or reliability.
           </p>
+
+          <h2 className="text-2xl font-semibold mt-8 mb-4">Affiliate & Advertisement Disclaimer</h2>
+          <p className="mb-6">
+            Some of the links on this website may be affiliate links, meaning we may earn a small commission if you click on them and make a purchase at no additional cost to you. We may also display ads through platforms like Google AdSense. These advertisements are provided by third-party networks, and we are not responsible for the content or claims made by these advertisers.
+          </p>
+
+          <h2 className="text-2xl font-semibold mt-8 mb-4">Image and Media Credits</h2>
+          <p className="mb-6">
+            Images and graphics used on this website are either:</p>
+            <ul className="list-disc list-inside ml-4 mt-2">
+              <li>AI-generated for illustrative purposes</li>
+              <li>Sourced from royalty-free platforms like <a href="https://www.unsplash.com" className="text-blue-600 underline" target="_blank">Unsplash</a> and <a href="https://www.freepik.com" className="text-blue-600 underline" target="_blank">Freepik</a></li>
+            </ul>
+          <p> All assets are used under the appropriate licenses and credit is given where required.</p>
+          
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Personal Responsibility</h2>
           <p className="mb-6">
-            You acknowledge that you are using our website voluntarily and that any choices, actions, and results now and in the future are solely your responsibility. We will not be liable to you or any other party for any decision made or action taken in reliance on the information provided on the Site.
+            By using this website, you acknowledge your personal responsibility for any decisions or actions you take based on the information found on the site. We shall not be held responsible for any outcomes or consequences resulting from such actions.
           </p>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Professional Disclaimer</h2>
+          <h2 className="text-2xl font-semibold mt-8 mb-4">No Professional Advice</h2>
           <p className="mb-6">
-            The Site cannot and does not contain professional advice. The information is provided for general informational and educational purposes only and is not a substitute for professional advice. We encourage you to consult with the appropriate professionals before taking any actions based on such information.
+            All information presented is for general informational purposes only. It should not be considered professional advice of any kind (medical, legal, financial, etc.). Always consult with a qualified professional before making decisions based on content from this website.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Limitation of Liability</h2>
           <p className="mb-6">
-            In no event shall TrendLite be liable for any indirect, incidental, special, consequential or punitive damages arising out of your access to, or use of, or inability to access or use the Site or any materials or content available through the Site.
+            In no event shall TrendLite, its team members, or contributors be held liable for any indirect or consequential loss or damage arising from your use of the website or reliance on the content provided herein.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
           <p className="mb-6">
-            If you have any questions regarding this Disclaimer, you may contact us at:
+            If you have any questions regarding this disclaimer or require further information, please contact us at:
             <br />
-            <a href="mailto:contact@chchandu554@gmail.com" className="text-blue-600 underline">contact@trendlite.online</a>
+            <a href="mailto:chchandu554@gmail.com" className="text-blue-600 underline">support@trendlite.online</a>
           </p>
         </main>
 

@@ -56,6 +56,7 @@ export default function TechPage({ techArticles, recentPosts }) {
           name="description"
           content="Explore English-language tech articles on gadgets, AI, mobile apps, and innovation. Stay ahead with TrendLite Tech."
         />
+        <meta name="robots" content="index, follow" />
         <meta
           name="keywords"
           content="Tech Blog, English Tech News, AI Updates, Gadgets 2025, Mobile Reviews, TrendLite Tech, Tech Articles in English"
@@ -70,7 +71,7 @@ export default function TechPage({ techArticles, recentPosts }) {
         <meta property="og:url" content="https://www.trendlite.online/tech" />
         <meta
           property="og:image"
-          content="https://www.trendlite.online/Trendlite-tech-og.webp"
+          content="https://www.trendlite.online/logo.webp"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="English Tech News | TrendLite" />
@@ -80,7 +81,7 @@ export default function TechPage({ techArticles, recentPosts }) {
         />
         <meta
           name="twitter:image"
-          content="https://www.trendlite.online/Trendlite-tech-og.webp"
+          content="https://www.trendlite.online/logo.webp"
         />
         <link rel="canonical" href="https://www.trendlite.online/tech" />
       </Head>

@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://www.trendlite.online/Trendlite-privacy-og.webp"
+          content="https://www.trendlite.online/logo.webp"
         />
 
         {/* Twitter Card Meta Tags */}
@@ -44,7 +44,7 @@ export default function PrivacyPolicyPage() {
         />
         <meta
           name="twitter:image"
-          content="https://www.trendlite.online/Trendlite-privacy-og.webp"
+          content="https://www.trendlite.online/logo.webp"
         />
 
         {/* Schema.org JSON-LD Markup */}
@@ -72,138 +72,74 @@ export default function PrivacyPolicyPage() {
         <Header />
 
         <main className="max-w-4xl mx-auto px-4 py-10 text-gray-800">
-          <h1 className="text-4xl font-bold mb-6 text-center">Privacy Policy</h1>
-          <p className="mb-4 text-lg leading-relaxed">
-            Last updated: May 15, 2025
-          </p>
-          <p className="mb-6 text-lg leading-relaxed">
-            This Privacy Policy describes Our policies and procedures on the collection,
-            use, and disclosure of Your information when You use the TrendLite website and
-            services, and informs You about Your privacy rights and how the law protects You.
-            By using TrendLite, You agree to the collection and use of information in
-            accordance with this Privacy Policy.
-          </p>
+  <h1 className="text-4xl font-bold mb-6 text-center">Privacy Policy</h1>
+  <p className="mb-4 text-lg leading-relaxed">Last updated: May 15, 2025</p>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Interpretation and Definitions</h2>
+  <p className="mb-6 text-lg leading-relaxed">
+    This Privacy Policy outlines how TrendLite (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, uses, and protects the personal data of our visitors (&quot;you&quot; or &quot;your&quot;) while browsing our website <a href="https://www.trendlite.online" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">https://www.trendlite.online</a>. By using our website, you agree to the practices described in this policy.
+  </p>
 
-          <h3 className="text-xl font-semibold mt-6 mb-2">Interpretation</h3>
-          <p className="mb-4">
-            Words with the initial letter capitalized have meanings defined under the
-            following conditions. These definitions apply whether they appear in singular or plural.
-          </p>
+  <h2 className="text-2xl font-semibold mt-8 mb-4">Information We Collect</h2>
 
-          <h3 className="text-xl font-semibold mt-6 mb-2">Definitions</h3>
-          <p className="mb-4">
-            For the purposes of this Privacy Policy:
-          </p>
-          <ul className="list-disc ml-6 mb-6">
-            <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
-            <li><strong>Company</strong> (referred to as &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot;) refers to TrendLite.</li>
-            <li><strong>Cookies</strong> are small files placed on Your device by a website to track browsing activity and enhance user experience.</li>
-            <li><strong>Country</strong> refers to AndhraPradesh, India.</li>
-            <li><strong>Device</strong> means any device such as a computer, cellphone or tablet that can access the Service.</li>
-            <li><strong>Personal Data</strong> means any information relating to an identified or identifiable individual.</li>
-            <li><strong>Service</strong> refers to the TrendLite website accessible at <code>https://www.trendlite.online</code>.</li>
-            <li><strong>Service Provider</strong> means third-party companies or individuals employed by the Company to facilitate the Service.</li>
-            <li><strong>Usage Data</strong> refers to data collected automatically from the Service, such as IP address, browser type, and pages visited.</li>
-            <li><strong>You</strong> means the individual or entity accessing or using the Service.</li>
-          </ul>
+  <h3 className="text-xl font-semibold mt-6 mb-2">Personal Information</h3>
+  <p className="mb-4">
+    We may collect personal information such as your name and email address when you contact us via forms or subscribe to newsletters.
+  </p>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Collecting and Using Your Personal Data</h2>
+  <h3 className="text-xl font-semibold mt-6 mb-2">Usage Data</h3>
+  <p className="mb-4">
+    Usage data may include information such as your device&apos;s IP address, browser type, operating system, referring URLs, page views, and time spent on our pages. We use this data to analyze user behavior and improve our content.
+  </p>
 
-          <h3 className="text-xl font-semibold mt-6 mb-2">Types of Data Collected</h3>
+  <h2 className="text-2xl font-semibold mt-8 mb-4">Cookies and Tracking Technologies</h2>
+  <p className="mb-4">
+    We use cookies to enhance user experience, store preferences, and gather anonymous usage statistics. You can modify your browser settings to refuse cookies, but this may limit functionality.
+  </p>
 
-          <h4 className="font-semibold mt-4 mb-2">Personal Data</h4>
-          <p className="mb-4">
-            While using Our Service, We may ask You to provide certain personally identifiable information that can be used to contact or identify You. This includes:
-          </p>
-          <ul className="list-disc ml-6 mb-6">
-            <li>Email address</li>
-            <li>Name</li>
-            <li>Any other information you provide through contact forms or comments</li>
-          </ul>
+  <h2 className="text-2xl font-semibold mt-8 mb-4">Third-Party Services</h2>
+  <p className="mb-4">
+    We may use tools like Google Analytics to monitor website traffic. These tools may collect data through cookies to provide reports and analytics. We do not share your personal data with these services.
+  </p>
 
-          <h4 className="font-semibold mt-4 mb-2">Usage Data</h4>
-          <p className="mb-4">
-            Usage Data is collected automatically and may include your IP address, browser type, version, the pages you visit, time and date of visit, time spent on pages, device identifiers, and other diagnostic data.
-          </p>
+  <h2 className="text-2xl font-semibold mt-8 mb-4">Use of AI-Generated and Free Images</h2>
+  <p className="mb-4">
+    We use freely available images from <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Unsplash</a> and AI-generated resources from <a href="https://www.freepik.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Freepik</a>. Credits are provided under each image as required by the respective license agreements.
+  </p>
 
-          <h4 className="font-semibold mt-4 mb-2">Tracking Technologies and Cookies</h4>
-          <p className="mb-4">
-            We use Cookies and similar tracking technologies to track activity on our Service and store certain information. Cookies may be Session or Persistent cookies. You can instruct your browser to refuse all cookies or indicate when a cookie is being sent, but refusing cookies may affect your experience on the site.
-          </p>
-          <p className="mb-4">
-            We use Cookies for:
-          </p>
-          <ul className="list-disc ml-6 mb-6">
-            <li>Essential Cookies: Necessary for the operation of our Service and to prevent fraudulent use.</li>
-            <li>Cookies Policy Acceptance: To remember if you have accepted our cookies policy.</li>
-            <li>Functionality Cookies: To remember your preferences like language and login details.</li>
-          </ul>
+  <h2 className="text-2xl font-semibold mt-8 mb-4">Your Rights</h2>
+  <p className="mb-4">
+    You have the right to:
+  </p>
+  <ul className="list-disc ml-6 mb-6">
+    <li>Request access to personal data we hold about you</li>
+    <li>Request correction or deletion of your data</li>
+    <li>Withdraw consent where applicable</li>
+    <li>Object to or restrict data processing</li>
+  </ul>
+  <p className="mb-6">
+    To exercise these rights, contact us at <a href="mailto:chchandu554@gmail.com" className="text-blue-600 underline">chchandu554@gmail.com</a>.
+  </p>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Use of Your Personal Data</h2>
-          <p className="mb-4">
-            We use your Personal Data for the following purposes:
-          </p>
-          <ul className="list-disc ml-6 mb-6">
-            <li>To provide and maintain our Service, including monitoring its usage.</li>
-            <li>To manage your Account and registration.</li>
-            <li>To contact You with updates, security alerts, or administrative messages.</li>
-            <li>To provide You with news, special offers, and information about products and services similar to those you have expressed interest in, unless you opt out.</li>
-            <li>To respond to your inquiries and manage your requests.</li>
-          </ul>
+  <h2 className="text-2xl font-semibold mt-8 mb-4">Data Security</h2>
+  <p className="mb-6">
+    We implement security measures to protect your data; however, no method of transmission or storage over the internet is 100% secure.
+  </p>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Third-Party Services</h2>
-          <p className="mb-4">
-            We may use third-party service providers such as Google Analytics to monitor and analyze the use of our Service. These providers have access to limited information needed to perform their functions and are required to protect your data in accordance with applicable laws.
-          </p>
+  <h2 className="text-2xl font-semibold mt-8 mb-4">Children&apos;s Privacy</h2>
+  <p className="mb-6">
+    Our website is not intended for children under the age of 13. We do not knowingly collect personal data from children. If you believe your child has provided us with data, please contact us.
+  </p>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Your Rights</h2>
-          <p className="mb-4">
-            You have the right to:
-          </p>
-          <ul className="list-disc ml-6 mb-6">
-            <li>Request access to the personal data we hold about you.</li>
-            <li>Request correction or deletion of your personal data.</li>
-            <li>Withdraw your consent to data processing where applicable.</li>
-            <li>Object to or restrict the processing of your personal data.</li>
-            <li>Request data portability.</li>
-          </ul>
-          <p className="mb-6">
-            To exercise these rights, please contact us at <a href="mailto:privacy@chchandu554@gmail.com" className="text-blue-600 underline">privacy@trendlite.online</a>.
-          </p>
+  <h2 className="text-2xl font-semibold mt-8 mb-4">Changes to This Policy</h2>
+  <p className="mb-6">
+    We may update this Privacy Policy from time to time. Changes will be posted on this page with the &quot;Last updated&quot; date.
+  </p>
 
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Data Security</h2>
-          <p className="mb-6">
-            We implement appropriate security measures to protect your personal data from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.
-          </p>
-           <h2 className="text-2xl font-semibold mt-8 mb-4">Image Credits</h2>
-          <p className="mb-6">
-            Some images used on this website are designed by Freepik and obtained from <a href="https://www.freepik.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Freepik.com</a>. We appreciate their valuable resources.
-          </p>
-
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Children&apos;s Privacy</h2>
-          <p className="mb-6">
-            Our Service is not intended for individuals under the age of 13. We do not knowingly collect personal data from children under 13. If you are a parent or guardian and believe your child has provided us personal data, please contact us immediately.
-          </p>
-
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Changes to This Privacy Policy</h2>
-          <p className="mb-6">
-            We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last updated&quot; date at the top. You are advised to review this Privacy Policy periodically for any changes.
-          </p>
-
-          <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
-          <p className="mb-6">
-            If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@trendlite.online" className="text-blue-600 underline">support@trendlite.online</a>.
-          </p>
-
-         <div className="text-center mt-10">
-          <Link href="/" className="text-blue-600 underline">
-            ← Back to Home
-          </Link>
-        </div>
-
-        </main>
+  <h2 className="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
+  <p className="mb-6">
+    If you have any questions about this Privacy Policy, feel free to email us at <a href="mailto:chchandu554@gmail.com" className="text-blue-600 underline">chchandu554@gmail.com</a>.
+  </p>
+</main>
 
         <Footer />
       </div>

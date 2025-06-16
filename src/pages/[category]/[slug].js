@@ -42,17 +42,21 @@ const ArticlePage = ({ article, recentPosts, initialComments }) => {
     <>
       <Head>
         <title>{`${article.title} | TrendLite`}</title>
-        <meta name="description" content={article.description || 'Read this amazing article on our blog.'} />
+
+        <meta name="description" content={article.introduction || 'Read this amazing article on our blog.'} />
+        <meta name="robots" content="index, follow" />
         <meta name="keywords" content={article.categories.map(cat => cat.title).join(', ')} />
         <meta name="author" content={article.author} />
+
         <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.description || 'Check out this article.'} />
+        <meta property="og:description" content={article.introduction || 'Check out this article.'} />
         <meta property="og:image" content={article.image}/>
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`https://www.trendlite.online/${article.slug.current}`} />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={article.title} />
-        <meta name="twitter:description" content={article.description || 'Explore this post on our blog.'} />
+        <meta name="twitter:description" content={article.introduction || 'Explore this post on our blog.'} />
         <meta name="twitter:image" content={article.image}/>
         <link rel="canonical" href={`https://www.trendlite.online/${article.slug.current}`} />
       </Head>
@@ -236,7 +240,7 @@ export async function getStaticProps({ params }) {
 
   const queryArticleBySlug = `*[_type == "post" && slug.current == $slug][0]{
     _id, title, slug, publishedAt, body, "author": author->name,
-    "image": mainImage.asset->url, categories[]->{title}, description
+    "image": mainImage.asset->url, categories[]->{title}, introduction
   }`;
 
   const article = await client.fetch(queryArticleBySlug, { slug });

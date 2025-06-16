@@ -55,7 +55,7 @@ export default function ContactPage() {
         <meta property="og:description" content="Reach out to TrendLite for feedback, partnerships, or any questions. We'd love to hear from you!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.trendlite.online/contact" />
-        <meta property="og:image" content="https://www.trendlite.online/Trendlite-contact-og.webp" />
+        <meta property="og:image" content="https://www.trendlite.online/logo.webp" />
 
         {/* Canonical URL */}
         <link rel="canonical" href="https://www.trendlite.online/contact" />

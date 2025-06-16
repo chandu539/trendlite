@@ -13,17 +13,18 @@ export default function HealthPage({ healthArticles, recentPosts }) {
       <Head>
         <title>Health - TrendLite</title>
         <meta name="description" content="Explore expert-written health articles, wellness tips, and lifestyle advice in English on TrendLite. Stay healthy and informed!" />
+        <meta name="robots" content="index, follow" />
         <meta name="keywords" content="Health, Wellness, Lifestyle, English Health Articles, Mental Health, Fitness Tips, TrendLite Health" />
         <meta name="author" content="TrendLite Team" />
         <meta property="og:title" content="Health - TrendLite" />
         <meta property="og:description" content="Get practical health and wellness tips with curated articles in English from TrendLite." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.trendlite.online/health" />
-        <meta property="og:image" content="https://www.trendlite.online/Trendlite-health-og.webp" />
+        <meta property="og:image" content="https://www.trendlite.online/logo.webp" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Health - TrendLite" />
         <meta name="twitter:description" content="Stay updated with health and wellness insights in English from TrendLite." />
-        <meta name="twitter:image" content="https://www.trendlite.online/Trendlite-health-og.webp" />
+        <meta name="twitter:image" content="https://www.trendlite.online/logo.webp" />
         <link rel="canonical" href="https://www.trendlite.online/health" />
       </Head>
 

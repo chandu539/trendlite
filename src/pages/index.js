@@ -49,17 +49,18 @@ export default function Home({ articles }) {
       <Head>
         <title>TrendLite | Tech & Health Blogs in English</title>
         <meta name="description" content="Stay updated with the latest articles on Technology and Health in English. TrendLite brings trending tech news, health tips, and expert reviews for everyone." />
+        <meta name="robots" content="index, follow" />
         <meta name="keywords" content="English Blog, Tech News, Health Tips, Latest Gadgets, Articles, TrendLite" />
         <meta name="author" content="TrendLite Team" />
         <meta property="og:title" content="TrendLite | Tech & Health Blogs in English" />
         <meta property="og:description" content="Explore trending content on technology and health written in English for native and global readers." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.trendlite.online/" />
-        <meta property="og:image" content="https://www.trendlite.online/Trendlite-home-og.webp" />
+        <meta property="og:image" content="https://www.trendlite.online/logo.webp" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="TrendLite | Tech & Health Blogs in English" />
         <meta name="twitter:description" content="Trending articles in English on Technology and Health. Follow TrendLite for daily updates." />
-        <meta name="twitter:image" content="https://www.trendlite.online/Trendlite-home-og.webp" />
+        <meta name="twitter:image" content="https://www.trendlite.online/logo.webp" />
         <link rel="canonical" href="https://www.trendlite.online/" />
       </Head>
 
