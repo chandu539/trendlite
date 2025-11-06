@@ -11,18 +11,25 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     const handleRouteChange = (url) => {
       if (typeof window.gtag === "function") {
-        window.gtag("config", GA_MEASUREMENT_ID, {
-          page_path: url,
-        });
+        window.gtag("config", GA_MEASUREMENT_ID, { page_path: url });
       }
     };
     router.events.on("routeChangeComplete", handleRouteChange);
     return () => router.events.off("routeChangeComplete", handleRouteChange);
-  }, [router.events]);
+  }, [router.events, GA_MEASUREMENT_ID]);
 
   return (
     <>
-      {process.env.NODE_ENV === "production" && (
+      {/* ✅ Add AdSense code globally here */}
+      <Script
+        async
+        strategy="afterInteractive"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5339681976378457"
+        crossOrigin="anonymous"
+      />
+
+      {/* (Optional) Google Analytics if needed */}
+      {process.env.NODE_ENV === "production" && GA_MEASUREMENT_ID && (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
@@ -38,6 +45,7 @@ export default function App({ Component, pageProps }) {
           </Script>
         </>
       )}
+
       <Component {...pageProps} />
     </>
   );
